@@ -17,7 +17,7 @@ function Navbar() {
     <header className="fixed inset-x-0 top-0 z-50 border-b border-sand/50 bg-cream/95 backdrop-blur-md">
       <nav className="section-shell flex h-20 items-center justify-between gap-4">
         <Link to="/" className="font-display text-xl font-bold text-espresso sm:text-2xl">
-          Grand Aurelia
+          Bavesta
         </Link>
 
         <div className="hidden items-center gap-6 md:flex">

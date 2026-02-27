@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Source+Sans+3:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color: #2f241c;
+  background: #f5efe4;
+}
+
+body {
+  margin: 0;
+  font-family: "Source Sans 3", sans-serif;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(184, 138, 68, 0.2), transparent 35%),
+    radial-gradient(circle at 80% 80%, rgba(78, 59, 47, 0.14), transparent 40%),
+    #f5efe4;
+  color: #2f241c;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.input-base {
+  @apply w-full rounded-md border border-sand/80 bg-white/90 px-4 py-3 text-espresso outline-none transition focus:border-gold focus:ring-2 focus:ring-gold/30;
+}
+
+.section-shell {
+  @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+}

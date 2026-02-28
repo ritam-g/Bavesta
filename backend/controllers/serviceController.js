@@ -1,5 +1,6 @@
 ﻿const { validationResult } = require("express-validator");
 const Service = require("../models/Service");
+const logger = require("../config/logger");
 
 const defaultServices = [
   {
@@ -96,7 +97,7 @@ const ensureDefaultServices = async () => {
   const existingCount = await Service.countDocuments();
   if (existingCount > 0) return;
   await Service.insertMany(defaultServices);
-  console.log("Default hospitality services seeded");
+  logger.info("Default hospitality services seeded");
 };
 
 const getServices = async (req, res, next) => {

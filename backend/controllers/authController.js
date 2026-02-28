@@ -2,6 +2,7 @@ const bcrypt = require("bcryptjs");
 const { validationResult } = require("express-validator");
 const User = require("../models/User");
 const createToken = require("../config/jwt");
+const logger = require("../config/logger");
 
 const ensureDefaultAdmin = async () => {
   const email = process.env.ADMIN_EMAIL;
@@ -21,7 +22,7 @@ const ensureDefaultAdmin = async () => {
     role: "admin",
   });
 
-  console.log(`Default admin created for ${email}`);
+  logger.info(`Default admin created for ${email}`);
 };
 
 const login = async (req, res, next) => {

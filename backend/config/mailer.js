@@ -27,7 +27,6 @@ const sendEmail = async ({ to, subject, html }) => {
   const transporter = getTransporter();
 
   if (!transporter) {
-    console.warn("Email not sent. SMTP credentials are not configured.");
     return { skipped: true };
   }
 

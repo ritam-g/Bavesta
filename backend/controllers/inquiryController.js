@@ -2,6 +2,7 @@
 const Service = require("../models/Service");
 const Inquiry = require("../models/Inquiry");
 const { sendEmail } = require("../config/mailer");
+const logger = require("../config/logger");
 
 const createInquiry = async (req, res, next) => {
   try {
@@ -40,7 +41,7 @@ const createInquiry = async (req, res, next) => {
         `,
       });
     } catch (emailError) {
-      console.error("Customer confirmation email failed:", emailError.message);
+      logger.error("Customer confirmation email failed:", emailError.message);
     }
 
     if (process.env.ADMIN_EMAIL) {
@@ -58,7 +59,7 @@ const createInquiry = async (req, res, next) => {
           `,
         });
       } catch (adminEmailError) {
-        console.error("Admin notification email failed:", adminEmailError.message);
+        logger.error("Admin notification email failed:", adminEmailError.message);
       }
     }
 

@@ -9,6 +9,7 @@ function Dashboard() {
   const { user, logout } = useAuth();
   const [services, setServices] = useState([]);
   const [inquiries, setInquiries] = useState([]);
+  const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -17,12 +18,18 @@ function Dashboard() {
       try {
         setLoading(true);
         setError("");
-        const [serviceRes, inquiryRes] = await Promise.all([api.get("/services"), api.get("/inquiries")]);
+        const [serviceRes, inquiryRes, bookingRes] = await Promise.all([
+          api.get("/services"),
+          api.get("/inquiries"),
+          api.get("/bookings"),
+        ]);
         setServices(serviceRes.data);
         setInquiries(inquiryRes.data);
+        setBookings(bookingRes.data);
       } catch {
         setServices([]);
         setInquiries([]);
+        setBookings([]);
         setError("Unable to load dashboard data right now.");
       } finally {
         setLoading(false);
@@ -36,14 +43,16 @@ function Dashboard() {
     const newCount = inquiries.filter((i) => i.status === "new").length;
     const progressCount = inquiries.filter((i) => i.status === "in_progress").length;
     const resolvedCount = inquiries.filter((i) => i.status === "resolved").length;
+    const pendingBookings = bookings.filter((b) => b.status === "pending").length;
 
     return [
       ["Services", services.length],
       ["New Inquiries", newCount],
       ["In Progress", progressCount],
       ["Resolved", resolvedCount],
+      ["Pending Bookings", pendingBookings],
     ];
-  }, [services, inquiries]);
+  }, [services, inquiries, bookings]);
 
   return (
     <section className="section-shell py-10">
@@ -59,7 +68,7 @@ function Dashboard() {
         </Button>
       </div>
 
-      <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
         {stats.map(([label, value]) => (
           <div key={label} className="glass-panel p-5">
             <p className="text-xs font-semibold uppercase tracking-[0.14em] text-mist">{label}</p>
@@ -74,6 +83,9 @@ function Dashboard() {
         </Link>
         <Link to="/admin/inquiries">
           <Button variant="slate">Manage Inquiries</Button>
+        </Link>
+        <Link to="/admin/bookings">
+          <Button variant="slate">Manage Bookings</Button>
         </Link>
       </div>
 

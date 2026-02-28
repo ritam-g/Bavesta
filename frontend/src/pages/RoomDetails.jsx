@@ -52,7 +52,7 @@ function RoomDetails() {
             <p className="mt-1 text-sm text-mist">per night</p>
 
             <div className="mt-8 grid gap-3">
-              <Link to={`/contact?inquiry=book-hotel&room=${room.id}`}>
+              <Link to={`/book-hotel?room=${room.id}`}>
                 <Button className="w-full">Book This Room</Button>
               </Link>
               <Link to="/rooms">

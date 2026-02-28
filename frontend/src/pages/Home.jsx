@@ -155,10 +155,10 @@ function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.38 }}
             >
-              <Link to="/contact?inquiry=book-hotel">
+              <Link to="/book-hotel">
                 <Button className="px-6">Book Hotel</Button>
               </Link>
-              <Link to="/contact?inquiry=book-restaurant">
+              <Link to="/book-restaurant">
                 <Button variant="ghost" className="px-6">
                   Book Restaurant
                 </Button>
@@ -218,10 +218,10 @@ function Home() {
                 </p>
               </div>
               <div className="grid gap-3 sm:min-w-72">
-                <Link to="/contact?inquiry=book-hotel-room">
+                <Link to="/book-hotel">
                   <Button className="w-full">Book Hotel Room</Button>
                 </Link>
-                <Link to="/contact?inquiry=reserve-restaurant-table">
+                <Link to="/book-restaurant">
                   <Button variant="ghost" className="w-full">
                     Reserve Restaurant Table
                   </Button>

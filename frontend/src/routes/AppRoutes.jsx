@@ -5,6 +5,8 @@ import PageTransition from "../components/animations/PageTransition";
 import Home from "../pages/Home";
 import Rooms from "../pages/Rooms";
 import RoomDetails from "../pages/RoomDetails";
+import BookHotel from "../pages/BookHotel";
+import BookRestaurant from "../pages/BookRestaurant";
 import Services from "../pages/Services";
 import ServiceDetails from "../pages/ServiceDetails";
 import About from "../pages/About";
@@ -13,6 +15,7 @@ import Login from "../pages/Admin/Login";
 import Dashboard from "../pages/Admin/Dashboard";
 import ManageServices from "../pages/Admin/ManageServices";
 import ManageInquiries from "../pages/Admin/ManageInquiries";
+import ManageBookings from "../pages/Admin/ManageBookings";
 
 function ProtectedRoute({ children }) {
   const { isAuthenticated } = useAuth();
@@ -35,6 +38,8 @@ function AppRoutes() {
         <Route path="/" element={withTransition(<Home />)} />
         <Route path="/rooms" element={withTransition(<Rooms />)} />
         <Route path="/rooms/:id" element={withTransition(<RoomDetails />)} />
+        <Route path="/book-hotel" element={withTransition(<BookHotel />)} />
+        <Route path="/book-restaurant" element={withTransition(<BookRestaurant />)} />
         <Route path="/services" element={withTransition(<Services />)} />
         <Route path="/services/:id" element={withTransition(<ServiceDetails />)} />
         <Route path="/about" element={withTransition(<About />)} />
@@ -62,6 +67,14 @@ function AppRoutes() {
           element={withTransition(
             <ProtectedRoute>
               <ManageInquiries />
+            </ProtectedRoute>,
+          )}
+        />
+        <Route
+          path="/admin/bookings"
+          element={withTransition(
+            <ProtectedRoute>
+              <ManageBookings />
             </ProtectedRoute>,
           )}
         />

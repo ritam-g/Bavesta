@@ -10,6 +10,11 @@ import { serviceFallback } from "../data/serviceData";
 
 function Home() {
   const [services, setServices] = useState([]);
+  const headingLines = [
+    "Build Stronger Hotels Through",
+    "Smart Operations, Talent, and",
+    "Guest-Centric Growth.",
+  ];
 
   useEffect(() => {
     const fetchServices = async () => {
@@ -55,14 +60,20 @@ function Home() {
               Hospitality Services & Hotel Management
             </motion.p>
 
-            <motion.h1
-              className="mt-6 font-display text-4xl font-extrabold leading-tight text-pearl sm:text-6xl lg:text-7xl"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-            >
-              Build Stronger Hotels Through Smart Operations, Talent, and Guest-Centric Growth.
-            </motion.h1>
+            <h1 className="mt-6 font-display text-4xl font-extrabold leading-tight text-pearl sm:text-6xl lg:text-7xl">
+              {headingLines.map((line, lineIdx) => (
+                <span key={line} className="block overflow-hidden">
+                  <motion.span
+                    className="block"
+                    initial={{ y: "110%", opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.55, delay: 0.12 + lineIdx * 0.12, ease: "easeOut" }}
+                  >
+                    {line}
+                  </motion.span>
+                </span>
+              ))}
+            </h1>
 
             <motion.p
               className="mt-6 max-w-3xl text-base leading-7 text-mist sm:text-lg"
@@ -89,8 +100,16 @@ function Home() {
           </div>
         </div>
 
-        <a href="#services-preview" className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 text-xs font-semibold tracking-[0.18em] text-mist">
-          SCROLL
+        <a
+          href="#services-preview"
+          className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 text-xs font-semibold tracking-[0.18em] text-mist"
+        >
+          <motion.span className="flex flex-col items-center gap-2" animate={{ y: [0, 6, 0] }} transition={{ duration: 1.4, repeat: Infinity }}>
+            <span>SCROLL</span>
+            <span className="inline-block h-6 w-3 rounded-full border border-mist/70">
+              <span className="mx-auto mt-1 block h-1.5 w-1.5 rounded-full bg-mist" />
+            </span>
+          </motion.span>
         </a>
       </section>
 

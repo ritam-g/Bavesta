@@ -6,13 +6,20 @@ import api from "../../services/api";
 function ManageInquiries() {
   const [inquiries, setInquiries] = useState([]);
   const [updatingId, setUpdatingId] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   const loadInquiries = async () => {
     try {
+      setLoading(true);
+      setError("");
       const { data } = await api.get("/inquiries");
       setInquiries(data);
     } catch {
       setInquiries([]);
+      setError("Unable to load inquiries.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -51,6 +58,8 @@ function ManageInquiries() {
       <h1 className="font-display text-4xl font-extrabold text-pearl">Manage Inquiries</h1>
 
       <div className="mt-8 space-y-4">
+        {loading && <p className="text-sm text-mist">Loading inquiries...</p>}
+        {error && <p className="text-sm text-red-300">{error}</p>}
         {inquiries.map((inquiry) => (
           <div key={inquiry._id} className="glass-panel p-6">
             <div className="flex flex-wrap items-start justify-between gap-3">
@@ -89,7 +98,7 @@ function ManageInquiries() {
             </div>
           </div>
         ))}
-        {!inquiries.length && <p className="text-sm text-mist">No inquiries found.</p>}
+        {!loading && !inquiries.length && !error && <p className="text-sm text-mist">No inquiries found.</p>}
       </div>
     </section>
   );

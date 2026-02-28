@@ -15,13 +15,20 @@ function ManageServices() {
   const [form, setForm] = useState(initialForm);
   const [editingId, setEditingId] = useState("");
   const [status, setStatus] = useState({ loading: false, success: "", error: "" });
+  const [loadingList, setLoadingList] = useState(true);
+  const [listError, setListError] = useState("");
 
   const loadServices = async () => {
     try {
+      setLoadingList(true);
+      setListError("");
       const { data } = await api.get("/services");
       setServices(data);
     } catch {
       setServices([]);
+      setListError("Unable to load services.");
+    } finally {
+      setLoadingList(false);
     }
   };
 
@@ -143,6 +150,8 @@ function ManageServices() {
       </form>
 
       <div className="mt-8 grid gap-4 md:grid-cols-2">
+        {loadingList && <p className="text-sm text-mist">Loading services...</p>}
+        {listError && <p className="text-sm text-red-300">{listError}</p>}
         {services.map((service) => (
           <div key={service._id} className="glass-panel p-6">
             <h2 className="font-display text-2xl font-bold text-pearl">{service.title}</h2>
@@ -158,6 +167,9 @@ function ManageServices() {
             </div>
           </div>
         ))}
+        {!loadingList && !services.length && !listError && (
+          <p className="text-sm text-mist">No services found.</p>
+        )}
       </div>
     </section>
   );

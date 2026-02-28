@@ -9,16 +9,23 @@ function Dashboard() {
   const { user, logout } = useAuth();
   const [services, setServices] = useState([]);
   const [inquiries, setInquiries] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const loadData = async () => {
       try {
+        setLoading(true);
+        setError("");
         const [serviceRes, inquiryRes] = await Promise.all([api.get("/services"), api.get("/inquiries")]);
         setServices(serviceRes.data);
         setInquiries(inquiryRes.data);
       } catch {
         setServices([]);
         setInquiries([]);
+        setError("Unable to load dashboard data right now.");
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -73,6 +80,8 @@ function Dashboard() {
       <div className="mt-8 glass-panel p-6">
         <h2 className="font-display text-2xl font-bold text-pearl">Recent Inquiries</h2>
         <div className="mt-4 space-y-3">
+          {loading && <p className="text-sm text-mist">Loading inquiries...</p>}
+          {error && <p className="text-sm text-red-300">{error}</p>}
           {inquiries.slice(0, 5).map((inquiry) => (
             <div key={inquiry._id} className="rounded-lg border border-white/10 bg-white/[0.03] p-4">
               <p className="text-sm font-semibold text-pearl">{inquiry.name}</p>
@@ -80,7 +89,7 @@ function Dashboard() {
               <p className="mt-2 text-sm text-mist">{inquiry.message}</p>
             </div>
           ))}
-          {!inquiries.length && <p className="text-sm text-mist">No inquiries yet.</p>}
+          {!loading && !inquiries.length && !error && <p className="text-sm text-mist">No inquiries yet.</p>}
         </div>
       </div>
     </section>

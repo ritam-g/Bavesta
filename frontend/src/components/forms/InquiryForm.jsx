@@ -1,4 +1,5 @@
 ﻿import { useEffect, useMemo, useState } from "react";
+import { motion } from "framer-motion";
 import Button from "../ui/Button";
 import api from "../../services/api";
 
@@ -86,52 +87,69 @@ function InquiryForm({ serviceId = "", heading = "Send an Inquiry", compact = fa
     }
   };
 
+  const fieldMotion = {
+    initial: { opacity: 0, y: 10 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, amount: 0.35 },
+    transition: { duration: 0.35, ease: "easeOut" },
+  };
+
   return (
     <form className={`glass-panel ${compact ? "p-6" : "p-7 sm:p-8"}`} onSubmit={submit}>
       <h3 className="font-display text-2xl font-bold text-pearl">{heading}</h3>
       <p className="mt-2 text-sm text-mist">Tell us your business needs and our team will reach out with a tailored plan.</p>
 
       <div className="mt-6 space-y-3">
-        <input
-          className="input-base"
-          name="name"
-          placeholder="Your full name"
-          value={form.name}
-          onChange={onChange}
-          required
-        />
-        <input
-          className="input-base"
-          type="email"
-          name="email"
-          placeholder="Work email"
-          value={form.email}
-          onChange={onChange}
-          required
-        />
-        <input
-          className="input-base"
-          name="phone"
-          placeholder="Phone number"
-          value={form.phone}
-          onChange={onChange}
-          required
-        />
+        <motion.div {...fieldMotion}>
+          <input
+            className="input-base"
+            name="name"
+            placeholder="Your full name"
+            value={form.name}
+            onChange={onChange}
+            required
+          />
+        </motion.div>
 
-        <select
-          className="input-base"
-          name="serviceId"
-          value={form.serviceId}
-          onChange={onChange}
-          disabled={Boolean(serviceId)}
-        >
-          <option value="">General inquiry</option>
-          {services.map((service) => (
-            <option key={service._id} value={service._id}>
-              {service.title}
-            </option>
-          ))}
-        </select>
+        <motion.div {...fieldMotion} transition={{ ...fieldMotion.transition, delay: 0.03 }}>
+          <input
+            className="input-base"
+            type="email"
+            name="email"
+            placeholder="Work email"
+            value={form.email}
+            onChange={onChange}
+            required
+          />
+        </motion.div>
+
+        <motion.div {...fieldMotion} transition={{ ...fieldMotion.transition, delay: 0.06 }}>
+          <input
+            className="input-base"
+            name="phone"
+            placeholder="Phone number"
+            value={form.phone}
+            onChange={onChange}
+            required
+          />
+        </motion.div>
+
+        <motion.div {...fieldMotion} transition={{ ...fieldMotion.transition, delay: 0.09 }}>
+          <select
+            className="input-base"
+            name="serviceId"
+            value={form.serviceId}
+            onChange={onChange}
+            disabled={Boolean(serviceId)}
+          >
+            <option value="">General inquiry</option>
+            {services.map((service) => (
+              <option key={service._id} value={service._id}>
+                {service.title}
+              </option>
+            ))}
+          </select>
+        </motion.div>
 
         {selectedService && (
           <p className="rounded-lg border border-gold/25 bg-gold/10 px-3 py-2 text-xs text-gold">
@@ -139,14 +157,16 @@ function InquiryForm({ serviceId = "", heading = "Send an Inquiry", compact = fa
           </p>
         )}
 
-        <textarea
-          className="input-base min-h-28"
-          name="message"
-          placeholder="How can we support your hospitality operation?"
-          value={form.message}
-          onChange={onChange}
-          required
-        />
+        <motion.div {...fieldMotion} transition={{ ...fieldMotion.transition, delay: 0.12 }}>
+          <textarea
+            className="input-base min-h-28"
+            name="message"
+            placeholder="How can we support your hospitality operation?"
+            value={form.message}
+            onChange={onChange}
+            required
+          />
+        </motion.div>
 
         <Button type="submit" className="w-full" disabled={status.loading}>
           {status.loading ? "Submitting..." : "Submit Inquiry"}

@@ -13,6 +13,7 @@ const { ensureDefaultServices } = require("./controllers/serviceController");
 const authRoutes = require("./routes/authRoutes");
 const serviceRoutes = require("./routes/serviceRoutes");
 const inquiryRoutes = require("./routes/inquiryRoutes");
+const bookingRoutes = require("./routes/bookingRoutes");
 const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 
 dotenv.config();
@@ -70,6 +71,7 @@ app.get("/api/health", (req, res) => {
 app.use("/api/auth", authRoutes);
 app.use("/api/services", serviceRoutes);
 app.use("/api/inquiries", inquiryRoutes);
+app.use("/api/bookings", bookingRoutes);
 
 app.use(notFound);
 app.use(errorHandler);

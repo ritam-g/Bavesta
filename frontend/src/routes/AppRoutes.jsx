@@ -3,6 +3,8 @@ import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import PageTransition from "../components/animations/PageTransition";
 import Home from "../pages/Home";
+import Rooms from "../pages/Rooms";
+import RoomDetails from "../pages/RoomDetails";
 import Services from "../pages/Services";
 import ServiceDetails from "../pages/ServiceDetails";
 import About from "../pages/About";
@@ -31,6 +33,8 @@ function AppRoutes() {
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={withTransition(<Home />)} />
+        <Route path="/rooms" element={withTransition(<Rooms />)} />
+        <Route path="/rooms/:id" element={withTransition(<RoomDetails />)} />
         <Route path="/services" element={withTransition(<Services />)} />
         <Route path="/services/:id" element={withTransition(<ServiceDetails />)} />
         <Route path="/about" element={withTransition(<About />)} />

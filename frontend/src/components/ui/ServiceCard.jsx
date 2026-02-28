@@ -4,7 +4,7 @@ import Card from "./Card";
 import Button from "./Button";
 import { getServiceBadge } from "../../data/serviceData";
 
-function ServiceCard({ service, delay = 0 }) {
+function ServiceCard({ service, delay = 0, ctaLabel = "View Details" }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 22 }}
@@ -29,7 +29,7 @@ function ServiceCard({ service, delay = 0 }) {
         <div className="mt-6">
           <Link to={`/services/${service._id}`}>
             <Button variant="ghost" className="w-full">
-              View Details
+              {ctaLabel}
             </Button>
           </Link>
         </div>

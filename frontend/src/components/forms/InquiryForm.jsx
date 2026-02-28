@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import Button from "../ui/Button";
 import api from "../../services/api";
 
-function InquiryForm({ serviceId = "", heading = "Send an Inquiry", compact = false }) {
+function InquiryForm({ serviceId = "", heading = "Send an Inquiry", compact = false, defaultMessage = "" }) {
   const [services, setServices] = useState([]);
   const [form, setForm] = useState({
     name: "",
@@ -17,6 +17,14 @@ function InquiryForm({ serviceId = "", heading = "Send an Inquiry", compact = fa
   useEffect(() => {
     setForm((prev) => ({ ...prev, serviceId }));
   }, [serviceId]);
+
+  useEffect(() => {
+    if (!defaultMessage) return;
+    setForm((prev) => ({
+      ...prev,
+      message: prev.message || defaultMessage,
+    }));
+  }, [defaultMessage]);
 
   useEffect(() => {
     const fetchServices = async () => {

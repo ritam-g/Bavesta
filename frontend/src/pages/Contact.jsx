@@ -1,8 +1,25 @@
-﻿import Seo from "../components/Seo";
+﻿import { useMemo } from "react";
+import { useSearchParams } from "react-router-dom";
+import Seo from "../components/Seo";
 import Reveal from "../components/animations/Reveal";
 import InquiryForm from "../components/forms/InquiryForm";
 
 function Contact() {
+  const [searchParams] = useSearchParams();
+  const inquiryIntent = searchParams.get("inquiry");
+
+  const intentMessage = useMemo(() => {
+    const intentMap = {
+      "book-hotel": "I would like to book a hotel stay.",
+      "book-restaurant": "I would like to reserve a restaurant table.",
+      "book-hotel-room": "I want to book a hotel room and need assistance with availability.",
+      "reserve-restaurant-table": "I want to reserve a restaurant table for a specific date.",
+      "hotel-package": "I need a custom hotel package for business or long-stay requirements.",
+    };
+
+    return intentMap[inquiryIntent] || "";
+  }, [inquiryIntent]);
+
   return (
     <section className="section-shell py-16 sm:py-20">
       <Seo title="Contact" description="Send your hospitality inquiry to Bavesta and our team will connect with you." />
@@ -37,7 +54,7 @@ function Contact() {
         </Reveal>
 
         <Reveal delay={0.08}>
-          <InquiryForm heading="Send Business Inquiry" />
+          <InquiryForm heading="Send Business Inquiry" defaultMessage={intentMessage} />
         </Reveal>
       </div>
     </section>

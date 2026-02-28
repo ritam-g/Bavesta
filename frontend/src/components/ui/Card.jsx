@@ -1,9 +1,7 @@
-function Card({ children, className = "" }) {
-  return (
-    <article className={`rounded-xl border border-sand/70 bg-white/90 p-6 shadow-luxe backdrop-blur-sm ${className}`}>
-      {children}
-    </article>
-  );
+﻿import clsx from "clsx";
+
+function Card({ children, className }) {
+  return <div className={clsx("glass-panel p-6", className)}>{children}</div>;
 }
 
 export default Card;

@@ -1,17 +1,16 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+﻿import { AnimatePresence } from "framer-motion";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import PageTransition from "../components/animations/PageTransition";
 import Home from "../pages/Home";
+import Services from "../pages/Services";
+import ServiceDetails from "../pages/ServiceDetails";
 import About from "../pages/About";
-import Rooms from "../pages/Rooms";
-import RoomDetails from "../pages/RoomDetails";
-import Restaurant from "../pages/Restaurant";
 import Contact from "../pages/Contact";
-import Booking from "../pages/Booking";
 import Login from "../pages/Admin/Login";
 import Dashboard from "../pages/Admin/Dashboard";
-import ManageRooms from "../pages/Admin/ManageRooms";
-import ManageReservations from "../pages/Admin/ManageReservations";
-import ManageBookings from "../pages/Admin/ManageBookings";
-import { useAuth } from "../context/AuthContext";
+import ManageServices from "../pages/Admin/ManageServices";
+import ManageInquiries from "../pages/Admin/ManageInquiries";
 
 function ProtectedRoute({ children }) {
   const { isAuthenticated } = useAuth();
@@ -21,53 +20,51 @@ function ProtectedRoute({ children }) {
   return children;
 }
 
+function withTransition(component) {
+  return <PageTransition>{component}</PageTransition>;
+}
+
 function AppRoutes() {
+  const location = useLocation();
+
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/rooms" element={<Rooms />} />
-      <Route path="/rooms/:id" element={<RoomDetails />} />
-      <Route path="/restaurant" element={<Restaurant />} />
-      <Route path="/contact" element={<Contact />} />
-      <Route path="/booking" element={<Booking />} />
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={withTransition(<Home />)} />
+        <Route path="/services" element={withTransition(<Services />)} />
+        <Route path="/services/:id" element={withTransition(<ServiceDetails />)} />
+        <Route path="/about" element={withTransition(<About />)} />
+        <Route path="/contact" element={withTransition(<Contact />)} />
 
-      <Route path="/admin/login" element={<Login />} />
-      <Route
-        path="/admin/dashboard"
-        element={
-          <ProtectedRoute>
-            <Dashboard />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/admin/rooms"
-        element={
-          <ProtectedRoute>
-            <ManageRooms />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/admin/reservations"
-        element={
-          <ProtectedRoute>
-            <ManageReservations />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/admin/bookings"
-        element={
-          <ProtectedRoute>
-            <ManageBookings />
-          </ProtectedRoute>
-        }
-      />
+        <Route path="/admin/login" element={withTransition(<Login />)} />
+        <Route
+          path="/admin/dashboard"
+          element={withTransition(
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>,
+          )}
+        />
+        <Route
+          path="/admin/services"
+          element={withTransition(
+            <ProtectedRoute>
+              <ManageServices />
+            </ProtectedRoute>,
+          )}
+        />
+        <Route
+          path="/admin/inquiries"
+          element={withTransition(
+            <ProtectedRoute>
+              <ManageInquiries />
+            </ProtectedRoute>,
+          )}
+        />
 
-      <Route path="*" element={<Navigate to="/" replace />} />
-    </Routes>
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </AnimatePresence>
   );
 }
 

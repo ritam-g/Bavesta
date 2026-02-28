@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
+﻿import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import Button from "../ui/Button";
 
 const navItems = [
   { path: "/", label: "Home" },
+  { path: "/services", label: "Services" },
   { path: "/about", label: "About" },
-  { path: "/rooms", label: "Rooms" },
-  { path: "/restaurant", label: "Restaurant" },
   { path: "/contact", label: "Contact" },
 ];
 
@@ -15,25 +15,43 @@ function Navbar() {
   const { isAuthenticated } = useAuth();
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [location.pathname]);
 
+  useEffect(() => {
+    const onScroll = () => setIsScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-sand/50 bg-cream/95 backdrop-blur-md">
-      <nav className="section-shell flex h-20 items-center justify-between gap-4">
-        <Link to="/" className="font-display text-xl font-bold text-espresso sm:text-2xl">
-          Bavesta
+    <motion.header
+      className="fixed inset-x-0 top-0 z-50"
+      animate={{
+        backgroundColor: isScrolled ? "rgba(8,18,33,0.92)" : "rgba(8,18,33,0.65)",
+        borderColor: isScrolled ? "rgba(233,239,248,0.14)" : "rgba(233,239,248,0.08)",
+      }}
+      transition={{ duration: 0.25 }}
+      style={{ backdropFilter: "blur(14px)", borderBottomWidth: 1 }}
+    >
+      <nav className="section-shell flex h-20 items-center justify-between gap-3">
+        <Link to="/" className="font-display text-lg font-extrabold tracking-wide text-pearl sm:text-xl">
+          BAVESTA
         </Link>
 
-        <div className="hidden items-center gap-6 md:flex">
+        <div className="hidden items-center gap-7 md:flex">
           {navItems.map((item) => (
             <NavLink
               key={item.path}
               to={item.path}
               className={({ isActive }) =>
-                `text-sm font-semibold uppercase tracking-wide transition ${isActive ? "text-gold" : "text-espresso hover:text-cocoa"}`
+                `text-sm font-semibold tracking-wide transition ${
+                  isActive ? "text-gold" : "text-pearl/85 hover:text-pearl"
+                }`
               }
             >
               {item.label}
@@ -42,11 +60,13 @@ function Navbar() {
         </div>
 
         <div className="hidden items-center gap-3 md:flex">
-          <Link to="/booking">
-            <Button>Book Stay</Button>
+          <Link to="/contact">
+            <Button variant="ghost" className="px-4 py-2.5">
+              Send Inquiry
+            </Button>
           </Link>
           <Link to={isAuthenticated ? "/admin/dashboard" : "/admin/login"}>
-            <Button variant="ghost" className="text-sm">
+            <Button variant="slate" className="px-4 py-2.5">
               Admin
             </Button>
           </Link>
@@ -54,7 +74,7 @@ function Navbar() {
 
         <button
           type="button"
-          className="inline-flex items-center justify-center rounded-md border border-sand/70 bg-white/70 p-2 text-espresso md:hidden"
+          className="inline-flex items-center justify-center rounded-lg border border-white/15 bg-white/5 p-2 text-pearl md:hidden"
           onClick={() => setIsMobileMenuOpen((prev) => !prev)}
           aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
           aria-expanded={isMobileMenuOpen}
@@ -72,39 +92,49 @@ function Navbar() {
         </button>
       </nav>
 
-      {isMobileMenuOpen && (
-        <div id="mobile-nav" className="border-t border-sand/60 bg-cream/98 md:hidden">
-          <div className="section-shell py-4">
-            <div className="flex flex-col gap-2">
-              {navItems.map((item) => (
-                <NavLink
-                  key={item.path}
-                  to={item.path}
-                  className={({ isActive }) =>
-                    `rounded-md px-3 py-2 text-sm font-semibold uppercase tracking-wide ${
-                      isActive ? "bg-gold/15 text-gold" : "text-espresso hover:bg-sand/25"
-                    }`
-                  }
-                >
-                  {item.label}
-                </NavLink>
-              ))}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            id="mobile-nav"
+            className="border-t border-white/10 bg-midnight/95 md:hidden"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2 }}
+          >
+            <div className="section-shell py-4">
+              <div className="flex flex-col gap-1.5">
+                {navItems.map((item) => (
+                  <NavLink
+                    key={item.path}
+                    to={item.path}
+                    className={({ isActive }) =>
+                      `rounded-lg px-3 py-2 text-sm font-semibold tracking-wide ${
+                        isActive ? "bg-gold/15 text-gold" : "text-pearl/85 hover:bg-white/5 hover:text-pearl"
+                      }`
+                    }
+                  >
+                    {item.label}
+                  </NavLink>
+                ))}
+              </div>
+              <div className="mt-4 grid gap-2">
+                <Link to="/contact">
+                  <Button variant="ghost" className="w-full">
+                    Send Inquiry
+                  </Button>
+                </Link>
+                <Link to={isAuthenticated ? "/admin/dashboard" : "/admin/login"}>
+                  <Button variant="slate" className="w-full">
+                    Admin
+                  </Button>
+                </Link>
+              </div>
             </div>
-
-            <div className="mt-4 grid gap-2">
-              <Link to="/booking">
-                <Button className="w-full">Book Stay</Button>
-              </Link>
-              <Link to={isAuthenticated ? "/admin/dashboard" : "/admin/login"}>
-                <Button variant="ghost" className="w-full">
-                  Admin
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      )}
-    </header>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.header>
   );
 }
 

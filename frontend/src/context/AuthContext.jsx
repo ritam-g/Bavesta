@@ -3,7 +3,7 @@ import api from "../services/api";
 
 const AuthContext = createContext(null);
 
-const STORAGE_KEY = "hotel_admin_auth";
+const STORAGE_KEY = "bavesta_admin_auth";
 
 export function AuthProvider({ children }) {
   const [auth, setAuth] = useState(() => {

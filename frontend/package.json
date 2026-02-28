@@ -1,5 +1,6 @@
 {
-  "name": "hotel-restaurant-frontend",
+  "name": "bavesta-hospitality-frontend",
+  "description": "Premium animated frontend for Bavesta Hospitality Services",
   "private": true,
   "version": "1.0.0",
   "type": "module",

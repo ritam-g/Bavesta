@@ -1,45 +1,77 @@
-# Hotel & Restaurant Management Web Application (MERN)
+﻿# Bavesta Hospitality Services Platform (MERN)
 
-Production-oriented MERN stack solution for a Hotel + Restaurant business with:
+Production-ready MERN web application for a premium Hospitality Services company.
 
-- Hotel room listing and booking
-- Restaurant menu showcase and table reservations
-- Contact inquiry management
-- Admin dashboard with protected routes
-- Secure backend with JWT, bcrypt, Helmet, CORS, rate limiting
+## Core Capabilities
+
+- Corporate service website with premium animated UI
+- Services catalog with dynamic service detail pages
+- Inquiry submission workflow with DB persistence
+- Email confirmation + admin notification for inquiries
+- Protected admin panel for:
+  - Service CRUD
+  - Inquiry status updates and deletion
+- Secure backend (JWT, bcrypt, Helmet, rate limiting, validation)
 
 ## Tech Stack
 
 ### Frontend
 - React (Vite)
 - Tailwind CSS
+- Framer Motion
 - React Router DOM
 - Axios
 - Context API (Auth)
-- Framer Motion
 - React Helmet Async (SEO)
 
 ### Backend
-- Node.js + Express
+- Node.js
+- Express
 - MongoDB + Mongoose
-- JWT authentication
-- bcryptjs
-- dotenv
-- CORS
-- Helmet
-- express-rate-limit
-- Multer
+- JWT + bcryptjs
+- Helmet + express-rate-limit
 - Nodemailer
 - express-validator
 
-## Project Structure
+## Architecture
 
-- `frontend/` React + Vite application
-- `backend/` Express MVC API
+### Backend (MVC)
+- `models/User.js`
+- `models/Service.js`
+- `models/Inquiry.js`
+- `controllers/authController.js`
+- `controllers/serviceController.js`
+- `controllers/inquiryController.js`
+- `routes/authRoutes.js`
+- `routes/serviceRoutes.js`
+- `routes/inquiryRoutes.js`
 
-## Quick Start
+### Frontend
+- Public pages: `Home`, `Services`, `ServiceDetails`, `About`, `Contact`
+- Admin pages: `Login`, `Dashboard`, `ManageServices`, `ManageInquiries`
+- Reusable components for animations, cards, forms, and SEO
 
-### 1. Clone and install
+## API Endpoints
+
+### Auth
+- `POST /api/auth/login`
+
+### Services
+- `GET /api/services`
+- `GET /api/services/:id`
+- `POST /api/services` (admin)
+- `PUT /api/services/:id` (admin)
+- `DELETE /api/services/:id` (admin)
+
+### Inquiries
+- `POST /api/inquiries`
+- `GET /api/inquiries` (admin)
+- `PUT /api/inquiries/:id` (admin)
+- `DELETE /api/inquiries/:id` (admin)
+
+## Local Setup
+
+### 1. Install dependencies
 
 ```bash
 cd backend
@@ -49,21 +81,23 @@ cd ../frontend
 npm install
 ```
 
-### 2. Configure environment
+### 2. Configure environment files
+
+Backend:
 
 ```bash
 cd backend
 cp .env.example .env
 ```
 
-Set:
+Set values for:
 - `MONGO_URI`
 - `JWT_SECRET`
 - `ADMIN_EMAIL`, `ADMIN_PASSWORD`, `ADMIN_NAME`
-- SMTP settings for booking/inquiry notifications
+- SMTP variables for email sending
 - `FRONTEND_URL`
 
-For frontend:
+Frontend:
 
 ```bash
 cd ../frontend
@@ -71,9 +105,10 @@ cp .env.example .env
 ```
 
 Set:
-- `VITE_API_BASE_URL` (e.g., `http://localhost:5000/api`)
+- `VITE_API_BASE_URL` (e.g. `http://localhost:5000/api`)
+- `VITE_SITE_NAME`
 
-### 3. Run locally
+### 3. Run development
 
 Backend:
 
@@ -89,58 +124,25 @@ cd frontend
 npm run dev
 ```
 
-## API Endpoints
-
-- `POST /api/auth/login`
-- `GET /api/rooms`
-- `GET /api/rooms/:id`
-- `POST /api/rooms` (admin)
-- `PUT /api/rooms/:id` (admin)
-- `DELETE /api/rooms/:id` (admin)
-- `POST /api/bookings`
-- `GET /api/bookings` (admin)
-- `POST /api/reservations`
-- `GET /api/reservations` (admin)
-- `POST /api/contact`
-- `GET /api/contact` (admin)
-
 ## Deployment
 
-### MongoDB Atlas
-Set Atlas URI in backend `MONGO_URI`.
-
-### Backend (Render)
-- Root directory: `backend`
-- Build command: `npm install`
-- Start command: `npm start`
-- Set all backend environment variables in Render dashboard
+### Backend (Render / Railway)
+- Root: `backend`
+- Build: `npm install`
+- Start: `npm start`
+- Set backend environment variables in provider dashboard
 
 ### Frontend (Vercel)
-- Root directory: `frontend`
-- Build command: `npm run build`
-- Output directory: `dist`
-- Configure `VITE_API_BASE_URL` with deployed backend URL (`https://<backend-domain>/api`)
-- `vercel.json` included for SPA route rewrites
+- Root: `frontend`
+- Build: `npm run build`
+- Output: `dist`
+- Env var: `VITE_API_BASE_URL=https://<backend-domain>/api`
 
 ## Security Notes
 
-- Passwords are hashed using bcrypt
-- JWT required for admin routes
-- Rate limiting and Helmet enabled globally
-- Input validation implemented with express-validator
+- Password hashing with bcrypt
+- JWT-protected admin routes
+- Helmet security headers
+- Rate limiting enabled
+- Request validation with express-validator
 - `.env` files are gitignored
-
-## Git Workflow
-
-Recommended branches:
-- `main` -> production
-- `develop` -> integration/testing
-- `feature/*` -> new features
-- `fix/*` -> bug fixes
-
-Conventional commits examples:
-- `feat: add room booking system`
-- `fix: correct date validation`
-- `refactor: improve controller logic`
-- `style: update hero section design`
-- `chore: setup environment variables`

@@ -1,4 +1,4 @@
-const path = require("path");
+﻿const path = require("path");
 const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
@@ -8,11 +8,10 @@ const dotenv = require("dotenv");
 
 const connectDB = require("./config/db");
 const { ensureDefaultAdmin } = require("./controllers/authController");
+const { ensureDefaultServices } = require("./controllers/serviceController");
 const authRoutes = require("./routes/authRoutes");
-const roomRoutes = require("./routes/roomRoutes");
-const bookingRoutes = require("./routes/bookingRoutes");
-const reservationRoutes = require("./routes/reservationRoutes");
-const contactRoutes = require("./routes/contactRoutes");
+const serviceRoutes = require("./routes/serviceRoutes");
+const inquiryRoutes = require("./routes/inquiryRoutes");
 const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 
 dotenv.config();
@@ -20,10 +19,15 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-connectDB().then(ensureDefaultAdmin).catch((error) => {
-  console.error("Startup failed:", error.message);
-  process.exit(1);
-});
+connectDB()
+  .then(async () => {
+    await ensureDefaultAdmin();
+    await ensureDefaultServices();
+  })
+  .catch((error) => {
+    console.error("Startup failed:", error.message);
+    process.exit(1);
+  });
 
 const allowedOrigins = [process.env.FRONTEND_URL, "http://localhost:5173"].filter(Boolean);
 
@@ -61,10 +65,8 @@ app.get("/api/health", (req, res) => {
 });
 
 app.use("/api/auth", authRoutes);
-app.use("/api/rooms", roomRoutes);
-app.use("/api/bookings", bookingRoutes);
-app.use("/api/reservations", reservationRoutes);
-app.use("/api/contact", contactRoutes);
+app.use("/api/services", serviceRoutes);
+app.use("/api/inquiries", inquiryRoutes);
 
 app.use(notFound);
 app.use(errorHandler);

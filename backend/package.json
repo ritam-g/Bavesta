@@ -1,7 +1,7 @@
 {
-  "name": "hotel-restaurant-backend",
+  "name": "bavesta-hospitality-backend",
   "version": "1.0.0",
-  "description": "Backend API for Hotel & Restaurant Management app",
+  "description": "Backend API for Bavesta Hospitality Services platform",
   "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js",
@@ -21,7 +21,6 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.18.1",
     "morgan": "^1.10.0",
-    "multer": "^2.0.2",
     "nodemailer": "^8.0.1"
   },
   "devDependencies": {

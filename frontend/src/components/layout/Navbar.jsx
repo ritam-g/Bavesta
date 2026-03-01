@@ -40,8 +40,9 @@ function Navbar() {
       style={{ backdropFilter: "blur(14px)", borderBottomWidth: 1 }}
     >
       <nav className="section-shell flex h-20 items-center justify-between gap-3">
-        <Link to="/" className="font-display text-lg font-extrabold tracking-wide text-pearl sm:text-xl">
-          BAVESTA
+        <Link to="/" className="flex flex-col font-display text-lg font-extrabold tracking-wide text-pearl sm:text-xl ">
+        {/* imge conflict */}
+          <p className="text-[2rem] bg-[url('./selected.png')] ">BAVESTA </p>
         </Link>
 
         <div className="hidden items-center gap-7 md:flex">

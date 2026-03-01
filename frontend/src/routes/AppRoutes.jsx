@@ -8,7 +8,7 @@ import RoomDetails from "../pages/RoomDetails";
 import BookHotel from "../pages/BookHotel";
 import BookRestaurant from "../pages/BookRestaurant";
 import Services from "../pages/Services";
-import ServiceDetails from "../pages/ServiceDetails";
+import ServiceDetail from "../pages/ServiceDetail";
 import About from "../pages/About";
 import Contact from "../pages/Contact";
 import Login from "../pages/Admin/Login";
@@ -41,7 +41,7 @@ function AppRoutes() {
         <Route path="/book-hotel" element={withTransition(<BookHotel />)} />
         <Route path="/book-restaurant" element={withTransition(<BookRestaurant />)} />
         <Route path="/services" element={withTransition(<Services />)} />
-        <Route path="/services/:id" element={withTransition(<ServiceDetails />)} />
+        <Route path="/services/:id" element={withTransition(<ServiceDetail />)} />
         <Route path="/about" element={withTransition(<About />)} />
         <Route path="/contact" element={withTransition(<Contact />)} />
 

@@ -127,7 +127,7 @@ function Home() {
             </motion.p>
 
             <h1 className="mt-6 font-display text-4xl font-extrabold leading-tight text-pearl sm:text-6xl lg:text-7xl">
-              {"Experience Luxury Hospitality".split(" ").map((word, index) => (
+              {"Bavesta Hospitality Services Pvt.Ltd.".split(" ").map((word, index) => (
                 <motion.span
                   key={`${word}-${index}`}
                   className="mr-3 inline-block"
@@ -149,7 +149,7 @@ function Home() {
               Discover premium hotel stays, refined dining experiences, and modern hospitality solutions built for 5-star guest satisfaction.
             </motion.p>
 
-            <motion.div
+            {/* <motion.div
               className="mt-9 flex flex-wrap gap-3"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -163,7 +163,7 @@ function Home() {
                   Book Restaurant
                 </Button>
               </Link>
-            </motion.div>
+            </motion.div> */}
           </div>
         </div>
 
@@ -184,7 +184,7 @@ function Home() {
         </a>
       </section>
 
-      <section id="rooms-preview" className="section-shell py-20">
+      {/* <section id="rooms-preview" className="section-shell py-20">
         <Reveal>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">Rooms Showcase</p>
           <h2 className="mt-3 font-display text-3xl font-extrabold text-pearl sm:text-4xl">Signature Rooms & Suites</h2>
@@ -204,9 +204,9 @@ function Home() {
             <Button variant="slate">View All Rooms</Button>
           </Link>
         </Reveal>
-      </section>
+      </section> */}
 
-      <section className="section-shell pb-20">
+      {/* <section className="section-shell pb-20">
         <Reveal>
           <div className="rounded-2xl border border-gold/25 bg-gradient-to-br from-[#102346] via-[#122a4f] to-[#0e1e38] p-8 shadow-luxe sm:p-10">
             <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
@@ -230,7 +230,7 @@ function Home() {
             </div>
           </div>
         </Reveal>
-      </section>
+      </section> */}
 
       <section className="section-shell pb-20">
         <Reveal>

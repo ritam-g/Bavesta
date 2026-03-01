@@ -33,7 +33,7 @@ function Services() {
 
       <Reveal>
         <p className="text-xs font-semibold uppercase tracking-[0.22em] text-gold">What We Offer</p>
-        <h1 className="mt-3 font-display text-4xl font-extrabold text-pearl sm:text-5xl">Hospitality Services Suite</h1>
+        <h1 className="mt-3 font-display text-4xl font-extrabold text-pearl sm:text-5xl">Bavesta Hospitality Services Pvt.Ltd.</h1>
         <p className="mt-4 max-w-3xl text-mist">
           Comprehensive service blocks designed to improve operational resilience, guest satisfaction, and business performance.
         </p>

@@ -36,13 +36,15 @@ function About() {
       </Reveal>
       <div className="mt-6 grid gap-5 md:grid-cols-3">
         {[
-          ["Sophia Bennett", "Chief Executive Officer"],
-          ["Daniel Carter", "Director, Operations & Consulting"],
-          ["Nina Rodriguez", "Head of Talent & Training"],
-        ].map(([name, role], index) => (
+          ["Janeswar Nanekala", "Chief Executive Officer","./janeswar.png"],
+          ["Raju Kalali", "Chief Operating Officer","./raju.png"],
+          ["Vamshi Krishna Reddy", "Chief Business Development Officer","./jiju.png"],
+        ].map(([name, role,imgUrl], index) => (
           <Reveal key={name} delay={index * 0.08}>
             <div className="glass-panel p-6">
-              <div className="h-12 w-12 rounded-full bg-gold/20" />
+              {/* //! picrute will come  */}
+              
+              <img src={`${imgUrl}`} alt="" className="h-12 w-12 rounded-full bg-white" />
               <h3 className="mt-4 font-display text-xl font-bold text-pearl">{name}</h3>
               <p className="mt-2 text-sm text-mist">{role}</p>
             </div>

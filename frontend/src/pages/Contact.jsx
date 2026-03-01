@@ -38,17 +38,23 @@ function Contact() {
             <h2 className="font-display text-2xl font-bold text-pearl">Direct Contact</h2>
             <div className="mt-5 space-y-4 text-sm text-mist">
               <p>
-                <span className="font-semibold text-pearl">Phone:</span> +1 (555) 620-9900
+                <span className="font-semibold text-pearl">Phone:</span> +91 8187077401
               </p>
               <p>
-                <span className="font-semibold text-pearl">Email:</span> hello@bavesta.com
+                <span className="font-semibold text-pearl">Phone:</span> +91 9640771603
               </p>
               <p>
+                <span className="font-semibold text-pearl">Phone:</span> +91 7981088456
+              </p>
+              <p>
+                <span className="font-semibold text-pearl">Email:</span> bavestahospitality@gmail.com
+              </p>
+              {/* <p>
                 <span className="font-semibold text-pearl">Address:</span> 128 Westlake Corporate Tower, New York, NY 10019
-              </p>
-              <p>
+              </p> */}
+              {/* <p>
                 <span className="font-semibold text-pearl">Hours:</span> Monday to Friday, 9:00 AM - 6:00 PM
-              </p>
+              </p> */}
             </div>
           </div>
         </Reveal>

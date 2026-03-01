@@ -56,10 +56,10 @@ function Footer() {
         <div>
           <h4 className="text-sm font-semibold uppercase tracking-[0.16em] text-gold">Reach Us</h4>
           <div className="mt-3 space-y-2 text-sm text-mist">
-            <p>+1 (555) 620-9900</p>
-            <p>hello@bavesta.com</p>
-            <p>Mon - Fri, 9:00 AM to 6:00 PM</p>
-            <p>128 Westlake Corporate Tower, New York, NY 10019</p>
+            <p>+91 8187077401</p>
+            <p>+91 9640771603</p>
+            <p>+91 7981088456</p>
+            <p>bavestahospitality@gmail.com</p>
           </div>
         </div>
 

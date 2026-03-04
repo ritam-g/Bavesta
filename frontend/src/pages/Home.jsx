@@ -128,7 +128,11 @@ function Home() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.06 }}
-              className="mt-4 max-w-4xl font-display text-3xl font-extrabold leading-tight text-pearl sm:mt-6 sm:text-6xl lg:text-7xl"
+  className="mt-4 max-w-4xl font-display text-3xl font-extrabold leading-tight
+  bg-gradient-to-r from-[#f5d27a] via-[#c9a56a] to-[#a67c2d]
+  bg-clip-text text-transparent
+  drop-shadow-[0_0_20px_rgba(201,165,106,0.25)]
+  sm:mt-6 sm:text-6xl lg:text-7xl"
             >
               Bavesta Hospitality Services Pvt.Ltd.
             </motion.h1>

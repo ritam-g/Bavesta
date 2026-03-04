@@ -453,8 +453,21 @@ const fallbackBenefitCards = [
   { icon: "spark", title: "Continuous Improvement", description: "Data-led refinement cycles to keep service standards ahead." },
 ];
 
+const serviceImageByTitle = {
+  "Recruitment & Placement": encodeURI("/services/requirement&&placement.png"),
+  "Payroll & Compliance": encodeURI("/services/Payroll & Compliance .png"),
+  "Hospitality Consulting": encodeURI("/services/Hospitality Consulting .png"),
+  "Guest Management": encodeURI("/services/Guest Management .png"),
+  "Hotel Sales & Business Development": encodeURI("/services/Hotel Sales & Business Development .png"),
+  "External Training Programs": encodeURI("/services/External Training Programs .png"),
+  "Hotel Operations Management": encodeURI("/services/Hotel Operations Management .png"),
+  "Companionship & Social Support Services": encodeURI("/services/Companionship & Social Support Services.jpg"),
+};
+
 export const getServiceDetailContent = (service) => {
   const mapped = service ? serviceDetailContentMap[service.title] || {} : {};
+  const mappedServiceImage =
+    (service && serviceImageByTitle[service.title]) || serviceImageByTitle["Recruitment & Placement"];
 
   const benefitCards = mapped.benefitCards?.length
     ? mapped.benefitCards
@@ -467,9 +480,11 @@ export const getServiceDetailContent = (service) => {
   return {
     tagline: mapped.tagline || "Enterprise-grade hospitality service delivery",
     heroImage:
+      mappedServiceImage ||
       mapped.heroImage ||
       "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=2200&q=80",
     overviewImage:
+      mappedServiceImage ||
       mapped.overviewImage ||
       "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1800&q=80",
     overviewParagraphs:

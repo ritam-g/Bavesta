@@ -1,4 +1,4 @@
-﻿export const serviceBadgeMap = {
+export const serviceBadgeMap = {
   "Recruitment & Placement": "RP",
   "Payroll & Compliance": "PC",
   "Hospitality Consulting": "HC",
@@ -8,6 +8,21 @@
   "Hotel Operations Management": "OM",
   "Companionship & Social Support Services": "CS",
 };
+
+const rawServiceImageMap = {
+  "Recruitment & Placement": "/services/requirement&&placement.png",
+  "Payroll & Compliance": "/services/Payroll & Compliance .png",
+  "Hospitality Consulting": "/services/Hospitality Consulting .png",
+  "Guest Management": "/services/Guest Management .png",
+  "Hotel Sales & Business Development": "/services/Hotel Sales & Business Development .png",
+  "External Training Programs": "/services/External Training Programs .png",
+  "Hotel Operations Management": "/services/Hotel Operations Management .png",
+  "Companionship & Social Support Services": "/services/Companionship & Social Support Services.jpg",
+};
+
+export const serviceImageMap = Object.fromEntries(
+  Object.entries(rawServiceImageMap).map(([title, path]) => [title, encodeURI(path)]),
+);
 
 export const serviceFallback = [
   "Recruitment & Placement",
@@ -27,3 +42,6 @@ export const serviceFallback = [
 }));
 
 export const getServiceBadge = (title) => serviceBadgeMap[title] || "SV";
+
+export const getServiceImage = (title) =>
+  serviceImageMap[title] || serviceImageMap["Recruitment & Placement"];

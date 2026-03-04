@@ -1,4 +1,4 @@
-﻿import { motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 function ServiceOverview({ overviewParagraphs, targetAudience, overviewImage }) {
   return (
@@ -36,9 +36,14 @@ function ServiceOverview({ overviewParagraphs, targetAudience, overviewImage }) 
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, amount: 0.25 }}
           transition={{ duration: 0.55, ease: "easeOut", delay: 0.04 }}
-          className="overflow-hidden rounded-2xl border border-white/10"
+          className="relative h-80 overflow-hidden rounded-2xl border border-white/10 sm:h-[26rem]"
         >
-          <img src={overviewImage} alt="Service overview" className="h-80 w-full object-cover sm:h-[26rem]" />
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url(${overviewImage})` }}
+            aria-hidden="true"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-midnight/15 via-midnight/25 to-midnight/65" />
         </motion.div>
       </div>
     </section>

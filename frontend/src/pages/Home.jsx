@@ -128,7 +128,7 @@ function Home() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.06 }}
-  className="mt-4 max-w-4xl font-display text-3xl font-extrabold leading-tight
+              className="mt-4 max-w-4xl font-display text-3xl font-extrabold leading-tight
   bg-gradient-to-r from-[#f5d27a] via-[#c9a56a] to-[#a67c2d]
   bg-clip-text text-transparent
   drop-shadow-[0_0_20px_rgba(201,165,106,0.25)]
@@ -159,16 +159,18 @@ function Home() {
             </AnimatePresence>
 
             <motion.div
-              className="mt-7 flex w-full flex-col gap-2.5 sm:mt-9 sm:w-auto sm:flex-row sm:flex-wrap sm:gap-3"
+              className="mt-7 flex w-full flex-col gap-3 sm:mt-9 sm:w-auto sm:flex-row sm:flex-wrap sm:gap-3"
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, delay: 0.12 }}
             >
               <Link to={activeServiceLink} className="w-full sm:w-auto">
-                <Button className="w-[1rem] px-5 sm:w-auto sm:px-6">Explore This Service</Button>
+                <Button className="h-12 w-full px-5 text-sm sm:h-auto sm:w-auto sm:px-6">
+                  Explore This Service
+                </Button>
               </Link>
               <Link to="/services" className="w-full sm:w-auto">
-                <Button variant="ghost" className="w-[1rem] px-5 sm:w-auto sm:px-6">
+                <Button variant="ghost" className="h-12 w-full px-5 text-sm sm:h-auto sm:w-auto sm:px-6">
                   View All Services
                 </Button>
               </Link>

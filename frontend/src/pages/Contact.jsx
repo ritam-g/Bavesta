@@ -1,8 +1,11 @@
-﻿import { useMemo } from "react";
+import { useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
 import Seo from "../components/Seo";
-import Reveal from "../components/animations/Reveal";
 import InquiryForm from "../components/forms/InquiryForm";
+import BulletPanel from "../components/company/BulletPanel";
+import PageHero from "../components/company/PageHero";
+import { companyProfile } from "../data/companyContent";
+import { getServiceImage } from "../data/serviceData";
 
 function Contact() {
   const [searchParams] = useSearchParams();
@@ -10,6 +13,7 @@ function Contact() {
 
   const intentMessage = useMemo(() => {
     const intentMap = {
+      consultation: "I would like to discuss a consultation for our hospitality operations and growth objectives.",
       "book-hotel": "I would like to book a hotel stay.",
       "book-restaurant": "I would like to reserve a restaurant table.",
       "book-hotel-room": "I want to book a hotel room and need assistance with availability.",
@@ -21,49 +25,40 @@ function Contact() {
   }, [inquiryIntent]);
 
   return (
-    <section className="section-shell py-16 sm:py-20">
-      <Seo title="Contact" description="Send your hospitality inquiry to Bavesta and our team will connect with you." />
+    <>
+      <Seo
+        title="Contact"
+        description="Connect with BAVESTA Hospitality Services for operations management, manpower, compliance, consulting, and lifestyle support inquiries."
+      />
 
-      <Reveal>
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">Contact Us</p>
-        <h1 className="mt-3 font-display text-4xl font-extrabold text-pearl sm:text-5xl">Let&apos;s Discuss Your Hospitality Goals</h1>
-        <p className="mt-4 max-w-3xl text-mist">
-          Tell us where you need support, from staffing and compliance to full operations and guest management.
-        </p>
-      </Reveal>
+      <PageHero
+        kicker="Contact Us"
+        breadcrumb="Contact"
+        title="Let's Discuss Your Hospitality Goals"
+        description="Share your requirement and our team will design a structured solution aligned to quality, compliance, and growth outcomes."
+        image={getServiceImage("Guest Management")}
+      />
 
-      <div className="mt-10 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-        <Reveal>
-          <div className="glass-panel p-7">
-            <h2 className="font-display text-2xl font-bold text-pearl">Direct Contact</h2>
-            <div className="mt-5 space-y-4 text-sm text-mist">
-              <p>
-                <span className="font-semibold text-pearl">Phone:</span> +91 8187077401
-              </p>
-              <p>
-                <span className="font-semibold text-pearl">Phone:</span> +91 9640771603
-              </p>
-              <p>
-                <span className="font-semibold text-pearl">Phone:</span> +91 7981088456
-              </p>
-              <p>
-                <span className="font-semibold text-pearl">Email:</span> bavestahospitality@gmail.com
-              </p>
-              {/* <p>
-                <span className="font-semibold text-pearl">Address:</span> 128 Westlake Corporate Tower, New York, NY 10019
-              </p> */}
-              {/* <p>
-                <span className="font-semibold text-pearl">Hours:</span> Monday to Friday, 9:00 AM - 6:00 PM
-              </p> */}
-            </div>
+      <section className="section-shell pb-20">
+        <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
+          <div className="space-y-6">
+            <article className="glass-panel p-7">
+              <h2 className="font-display text-2xl font-bold text-pearl">Direct Contact</h2>
+              <div className="mt-5 space-y-3 text-sm text-mist">
+                <p><span className="font-semibold text-pearl">Phone:</span> +91 8187077401</p>
+                <p><span className="font-semibold text-pearl">Phone:</span> +91 9640771603</p>
+                <p><span className="font-semibold text-pearl">Phone:</span> +91 7981088456</p>
+                <p><span className="font-semibold text-pearl">Email:</span> bavestahospitality@gmail.com</p>
+              </div>
+            </article>
+
+            <BulletPanel title="Why Clients Engage BAVESTA" items={companyProfile.whyChooseUs} />
           </div>
-        </Reveal>
 
-        <Reveal delay={0.08}>
           <InquiryForm heading="Send Business Inquiry" defaultMessage={intentMessage} />
-        </Reveal>
-      </div>
-    </section>
+        </div>
+      </section>
+    </>
   );
 }
 

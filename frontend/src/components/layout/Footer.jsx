@@ -1,91 +1,130 @@
-﻿import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+
+const quickLinks = [
+  { label: "Home", to: "/" },
+  { label: "About Us", to: "/about" },
+  { label: "Contact Us", to: "/contact" },
+];
+
+const serviceLinks = [
+  { label: "Recruitment & Placement", to: "/services" },
+  { label: "Hospitality Consulting", to: "/services" },
+  { label: "Guest Management", to: "/services" },
+  { label: "Operations Management", to: "/services" },
+];
+
+const moreLinks = [
+  { label: "Payroll & Compliance", to: "/services" },
+  { label: "Training Programs", to: "/services" },
+  { label: "Sales Development", to: "/services" },
+  { label: "Companionship Support", to: "/services" },
+];
 
 const socialLinks = [
   {
     name: "LinkedIn",
     href: "https://www.linkedin.com",
     icon: (
-      <path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5ZM2.5 8.8h5v12.7h-5V8.8Zm8.1 0h4.8v1.8h.1c.7-1.3 2.3-2.2 4.7-2.2 5 0 5.9 3.3 5.9 7.6v5.5h-5v-4.9c0-2.3 0-5.3-3.2-5.3-3.2 0-3.7 2.5-3.7 5.1v5.1h-5V8.8Z" />
+      <path d="M6 9h3v9H6zM7.5 4.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 9h3v1.3c.5-.9 1.5-1.6 3-1.6 2.2 0 3.5 1.4 3.5 4.1V18h-3v-4.3c0-1.2-.4-2-1.5-2s-1.8.8-1.8 2V18h-3V9Z" />
     ),
+  },
+  {
+    name: "Facebook",
+    href: "https://www.facebook.com",
+    icon: <path d="M14 8h2V5h-2c-2.2 0-4 1.8-4 4v2H8v3h2v5h3v-5h2.2l.8-3H13V9c0-.6.4-1 1-1Z" />,
   },
   {
     name: "Instagram",
     href: "https://www.instagram.com",
     icon: (
-      <path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 2 .3 2.5.5.7.3 1.2.6 1.8 1.2.5.5.9 1.1 1.2 1.8.2.5.4 1.3.5 2.5.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 2-.5 2.5-.3.7-.6 1.2-1.2 1.8-.5.5-1.1.9-1.8 1.2-.5.2-1.3.4-2.5.5-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-2-.3-2.5-.5-.7-.3-1.2-.6-1.8-1.2-.5-.5-.9-1.1-1.2-1.8-.2-.5-.4-1.3-.5-2.5-.1-1.3-.1-1.7-.1-4.9s0-3.6.1-4.9c.1-1.2.3-2 .5-2.5.3-.7.6-1.2 1.2-1.8.5-.5 1.1-.9 1.8-1.2.5-.2 1.3-.4 2.5-.5 1.3-.1 1.7-.1 4.9-.1Zm0 4.4a5.4 5.4 0 1 0 0 10.8 5.4 5.4 0 0 0 0-10.8Zm0 8.9a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm6.9-9.1a1.3 1.3 0 1 1-2.6 0 1.3 1.3 0 0 1 2.6 0Z" />
+      <>
+        <rect x="4.5" y="4.5" width="15" height="15" rx="4.5" />
+        <circle cx="12" cy="12" r="3.5" />
+        <circle cx="16.5" cy="7.5" r="1" fill="currentColor" stroke="none" />
+      </>
     ),
   },
   {
-    name: "X",
-    href: "https://x.com",
-    icon: (
-      <path d="M18.9 2h3.7l-8.1 9.2L24 22h-7.5l-5.9-7.3L4.2 22H.5l8.7-9.9L0 2h7.7l5.3 6.7L18.9 2Zm-1.3 17.8h2.1L6.6 4.1H4.3l13.3 15.7Z" />
-    ),
+    name: "WhatsApp",
+    href: "https://www.whatsapp.com",
+    icon: <path d="M12 5a7 7 0 0 0-6 10.6L5 20l4.5-1.2A7 7 0 1 0 12 5Zm3.6 9.5c-.1.4-.6.8-1 .9-.3.1-.8.2-2.7-.6-2.3-1-3.8-3.4-3.9-3.6-.1-.2-.9-1.2-.9-2.3 0-1.1.6-1.6.8-1.8.2-.2.5-.2.7-.2h.5c.2 0 .4 0 .6.4.2.5.7 1.7.7 1.8.1.2.1.4 0 .5-.1.2-.1.3-.3.5l-.4.4c-.1.1-.2.2-.1.4.1.2.6 1 1.4 1.6 1 .9 1.8 1.2 2 1.3.2.1.3 0 .5-.1l.6-.7c.2-.2.3-.2.5-.1l1.7.8c.2.1.4.2.5.3.1.2.1.8 0 1.2Z" />,
   },
 ];
 
 function Footer() {
   return (
-    <footer className="mt-20 border-t border-white/10 bg-midnight/90 py-14">
-      <div className="section-shell grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-        <div>
-          <h3 className="font-display text-xl font-bold text-pearl">BAVESTA</h3>
-          <p className="mt-3 text-sm leading-6 text-mist">
-            Premium hospitality services for hotel growth, operations excellence, and guest experience transformation.
+    <footer className="mt-6 bg-[#2f3033] text-[#f4f4f4]">
+      <div className="section-shell py-14">
+        <div className="grid gap-10 xl:grid-cols-[0.8fr_1.2fr]">
+          <div className="space-y-6">
+            <div className="inline-flex rounded-2xl border border-white/40 p-2">
+              <div className="flex items-center gap-2 sm:gap-3">
+                {socialLinks.map((item) => (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={item.name}
+                    className="inline-flex h-12 w-12 items-center justify-center rounded-xl text-white transition hover:bg-white/10"
+                  >
+                    <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="1.7">
+                      {item.icon}
+                    </svg>
+                  </a>
+                ))}
+              </div>
+            </div>
+            <p className="max-w-md text-sm leading-7 text-white/78 sm:text-base">
+              Integrated hospitality operations, consulting, compliance, staffing, and guest service programs across India.
+            </p>
+          </div>
+
+          <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
+            <div>
+              <h3 className="text-2xl font-semibold text-white">Quick Links</h3>
+              <div className="mt-4 space-y-2">
+                {quickLinks.map((item) => (
+                  <Link key={item.label} to={item.to} className="block text-base text-white/82 transition hover:text-white sm:text-lg">
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-2xl font-semibold text-white">Services</h3>
+              <div className="mt-4 space-y-2">
+                {serviceLinks.map((item) => (
+                  <Link key={item.label} to={item.to} className="block text-base text-white/82 transition hover:text-white sm:text-lg">
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-2xl font-semibold text-white">More</h3>
+              <div className="mt-4 space-y-2">
+                {moreLinks.map((item) => (
+                  <Link key={item.label} to={item.to} className="block text-base text-white/82 transition hover:text-white sm:text-lg">
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-12 border-t border-white/20 pt-9 text-center">
+          <p className="font-display text-2xl font-semibold text-white sm:text-3xl lg:text-4xl">
+            BAVESTA HOSPITALITY - A COMPREHENSIVE SERVICE SOLUTION PROVIDER
+          </p>
+          <p className="mt-4 text-sm text-white/82 sm:text-base">
+            Copyright {new Date().getFullYear()} BAVESTA Hospitality Services Pvt. Ltd. All rights reserved.
           </p>
         </div>
-
-        <div>
-          <h4 className="text-sm font-semibold uppercase tracking-[0.16em] text-gold">Quick Links</h4>
-          <div className="mt-3 flex flex-col gap-2 text-sm text-mist">
-            <Link to="/about" className="hover:text-pearl">
-              About
-            </Link>
-            <Link to="/rooms" className="hover:text-pearl">
-              Rooms
-            </Link>
-            <Link to="/services" className="hover:text-pearl">
-              Services
-            </Link>
-            <Link to="/contact" className="hover:text-pearl">
-              Contact
-            </Link>
-          </div>
-        </div>
-
-        <div>
-          <h4 className="text-sm font-semibold uppercase tracking-[0.16em] text-gold">Reach Us</h4>
-          <div className="mt-3 space-y-2 text-sm text-mist">
-            <p>+91 8187077401</p>
-            <p>+91 9640771603</p>
-            <p>+91 7981088456</p>
-            <p>bavestahospitality@gmail.com</p>
-          </div>
-        </div>
-
-        <div>
-          <h4 className="text-sm font-semibold uppercase tracking-[0.16em] text-gold">Social</h4>
-          <div className="mt-3 flex items-center gap-3">
-            {socialLinks.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={item.name}
-                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/5 text-mist transition hover:border-gold/60 hover:text-gold"
-              >
-                <svg viewBox="0 0 24 24" className="h-4 w-4 fill-current">
-                  {item.icon}
-                </svg>
-              </a>
-            ))}
-          </div>
-        </div>
       </div>
-      <p className="mt-10 text-center text-xs text-mist/80">
-        © {new Date().getFullYear()} Bavesta Hospitality Services. All rights reserved.
-      </p>
     </footer>
   );
 }

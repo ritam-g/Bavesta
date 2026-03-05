@@ -1,14 +1,14 @@
-﻿import { useRef } from "react";
+import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 function ServiceHero({ title, tagline, heroImage }) {
   const sectionRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end start"] });
-  const bgY = useTransform(scrollYProgress, [0, 1], [0, 48]);
+  const bgY = useTransform(scrollYProgress, [0, 1], [0, 36]);
 
   return (
-    <section ref={sectionRef} className="relative overflow-hidden rounded-3xl border border-white/10">
+    <section ref={sectionRef} className="page-hero">
       <motion.div
         className="absolute inset-0"
         style={{
@@ -16,52 +16,49 @@ function ServiceHero({ title, tagline, heroImage }) {
           backgroundImage: `url(${heroImage})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
+          opacity: 0.28,
         }}
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-midnight/88 via-midnight/78 to-midnight/70" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#0a1f3b]/94 via-[#0b223f]/84 to-[#0d2748]/86" />
 
-      <div className="section-shell relative z-10 py-14 sm:py-16 lg:py-20">
+      <div className="relative z-10">
         <motion.nav
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          className="text-xs font-semibold uppercase tracking-[0.14em] text-pearl/75"
+          transition={{ duration: 0.35 }}
+          className="text-xs font-semibold uppercase tracking-[0.13em] text-pearl/75"
           aria-label="Breadcrumb"
         >
-          <Link to="/" className="hover:text-pearl">
-            Home
-          </Link>
+          <Link to="/" className="hover:text-pearl">Home</Link>
           <span className="mx-2">/</span>
-          <Link to="/services" className="hover:text-pearl">
-            Services
-          </Link>
+          <Link to="/services" className="hover:text-pearl">Services</Link>
           <span className="mx-2">/</span>
           <span className="text-gold">{title}</span>
         </motion.nav>
 
         <motion.p
-          initial={{ opacity: 0, y: 14 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.45, delay: 0.08 }}
-          className="mt-8 inline-flex rounded-full border border-gold/40 bg-gold/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-gold"
+          transition={{ duration: 0.4, delay: 0.05 }}
+          className="mt-6 inline-flex rounded-full border border-gold/45 bg-gold/12 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-gold"
         >
-          Service Detail
+          Service Profile
         </motion.p>
 
         <motion.h1
-          initial={{ opacity: 0, y: 18 }}
+          initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.15 }}
-          className="mt-6 max-w-5xl font-display text-4xl font-extrabold leading-tight text-pearl sm:text-5xl lg:text-6xl"
+          transition={{ duration: 0.45, delay: 0.1 }}
+          className="mt-5 max-w-5xl font-display text-4xl font-extrabold leading-tight text-pearl sm:text-5xl"
         >
           {title}
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 18 }}
+          initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.24 }}
-          className="mt-5 max-w-3xl text-base leading-7 text-pearl/85 sm:text-lg"
+          transition={{ duration: 0.45, delay: 0.14 }}
+          className="mt-4 max-w-3xl text-sm leading-7 text-pearl/85 sm:text-base"
         >
           {tagline}
         </motion.p>

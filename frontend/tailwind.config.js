@@ -12,8 +12,8 @@ export default {
         mist: "#9dadc8",
       },
       fontFamily: {
-        display: ["'Manrope'", "sans-serif"],
-        body: ["'Inter'", "sans-serif"],
+        display: ["'Playfair Display'", "serif"],
+        body: ["'Plus Jakarta Sans'", "sans-serif"],
       },
       boxShadow: {
         luxe: "0 18px 60px -25px rgba(8, 18, 33, 0.6)",

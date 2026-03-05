@@ -1,12 +1,12 @@
-﻿@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700;800&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  color: #e9eff8;
-  background: #081221;
+  color: #1f2734;
+  background: #efefec;
 }
 
 html {
@@ -16,12 +16,12 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: "Inter", sans-serif;
-  color: #e9eff8;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  color: #1f2734;
   background:
-    radial-gradient(circle at 12% 10%, rgba(201, 165, 106, 0.17), transparent 35%),
-    radial-gradient(circle at 88% 82%, rgba(48, 74, 120, 0.34), transparent 40%),
-    #081221;
+    radial-gradient(circle at 5% 8%, rgba(242, 197, 112, 0.16), transparent 28%),
+    radial-gradient(circle at 88% 26%, rgba(86, 107, 145, 0.09), transparent 30%),
+    #efefec;
 }
 
 a {
@@ -30,23 +30,40 @@ a {
 }
 
 .section-shell {
-  @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  @apply mx-auto w-full max-w-[1480px] px-4 sm:px-6 lg:px-8;
 }
 
 .input-base {
-  @apply w-full rounded-xl border border-pearl/10 bg-white/5 px-4 py-3 text-sm text-pearl placeholder:text-mist outline-none transition focus:border-gold/70 focus:ring-2 focus:ring-gold/30;
+  @apply w-full rounded-xl border border-[#c9c3b8] bg-white px-4 py-3 text-sm text-[#1f2734] placeholder:text-[#8f95a1] outline-none transition focus:border-[#c9a56a] focus:ring-2 focus:ring-[#c9a56a]/35;
 }
 
 .glass-panel {
-  @apply rounded-2xl border border-white/10 bg-white/5 shadow-luxe backdrop-blur-lg;
+  @apply rounded-2xl border border-[#345987]/50 shadow-luxe backdrop-blur-lg;
+  background-color: rgba(13, 33, 60, 0.76);
 }
 
-.noise-bg {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 0.7px, transparent 0.7px);
-  background-size: 4px 4px;
+.page-hero {
+  @apply relative overflow-hidden rounded-2xl border border-[#355b88]/50 bg-[#0b203c]/85 p-6 sm:p-8 lg:p-10;
 }
-.test-gradient {
-  background: linear-gradient(to right, #f5d27a, #c9a56a, #a67c2d);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+
+.page-hero::before {
+  content: "";
+  position: absolute;
+  inset: -20% -10% auto auto;
+  width: 260px;
+  height: 260px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(201, 165, 106, 0.28), transparent 62%);
+  pointer-events: none;
+}
+
+.page-hero::after {
+  content: "";
+  position: absolute;
+  inset: auto auto -30% -10%;
+  width: 300px;
+  height: 300px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(53, 91, 136, 0.28), transparent 65%);
+  pointer-events: none;
 }

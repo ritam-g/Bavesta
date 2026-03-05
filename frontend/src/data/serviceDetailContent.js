@@ -1,447 +1,323 @@
-﻿const defaultProcess = [
+import { getServiceImage } from "./serviceData";
+
+const defaultProcess = [
   {
     title: "Consultation",
-    description: "We assess your current hospitality challenges, goals, and operating context.",
+    description: "We assess your current operational context, business goals, and service expectations.",
   },
   {
     title: "Planning & Strategy",
-    description: "A tailored execution plan is created with milestones, ownership, and outcomes.",
+    description: "A structured execution roadmap is prepared with timelines, ownership, and KPIs.",
   },
   {
     title: "Implementation",
-    description: "Our team deploys service frameworks, resources, and best-practice playbooks.",
+    description: "Our team deploys approved workflows, service standards, and operational controls.",
   },
   {
     title: "Monitoring & Optimization",
-    description: "Performance indicators are tracked and refined to maintain high service standards.",
+    description: "Performance, compliance, and service quality are monitored and refined continuously.",
   },
   {
     title: "Reporting & Improvement",
-    description: "Clear reporting and continuous improvements ensure measurable long-term impact.",
+    description: "Clear reporting and periodic improvements ensure long-term value creation.",
   },
 ];
 
 const serviceDetailContentMap = {
-  "Recruitment & Placement": {
-    tagline: "Build High-Performing Hospitality Teams Faster",
-    heroImage:
-      "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=2200&q=80",
-    overviewImage:
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1800&q=80",
+  "Hotel Operations Management": {
+    tagline: "Complete Hospitality Operations with Structured Performance Control",
     overviewParagraphs: [
-      "Our Recruitment & Placement service is designed for hospitality brands that need reliable talent quickly without compromising quality.",
-      "We source, screen, and place candidates across hotel operations, front office, F&B, housekeeping, and leadership roles.",
-      "Every hiring cycle is aligned to your brand standards, guest expectations, and operational targets.",
+      "We manage and operate hotels, resorts, guest houses, serviced apartments, restaurants, food courts, clubs, and catering establishments through disciplined management frameworks.",
+      "Our scope includes day-to-day operational governance, service quality monitoring, revenue performance review, and process standardization.",
+      "This model helps hospitality businesses scale with consistency, accountability, and measurable business outcomes.",
     ],
     targetAudience: [
-      "Hotels scaling new properties or departments",
-      "Restaurants needing quality floor and kitchen teams",
-      "Hospitality groups reducing attrition and hiring delays",
+      "Hotels and resorts requiring full operations support",
+      "Owners seeking operational restructuring and audits",
+      "Hospitality brands scaling premium service delivery",
     ],
     process: [
-      {
-        title: "Role Discovery",
-        description: "We define role expectations, competency benchmarks, and cultural-fit criteria.",
-      },
-      {
-        title: "Talent Sourcing",
-        description: "Candidates are sourced through hospitality-focused pipelines and referral networks.",
-      },
-      {
-        title: "Screening & Assessment",
-        description: "Structured evaluations validate technical ability, service attitude, and reliability.",
-      },
-      {
-        title: "Placement & Onboarding",
-        description: "Selected candidates are placed with onboarding guidance for faster productivity.",
-      },
-      {
-        title: "Post-Placement Review",
-        description: "Retention and performance are reviewed to improve future hiring cycles.",
-      },
+      { title: "Operational Assessment", description: "We evaluate current performance, staffing, workflows, and revenue patterns." },
+      { title: "Contract & Governance Setup", description: "Management scope, responsibilities, and control systems are finalized." },
+      { title: "Execution Rollout", description: "SOPs, quality controls, and leadership routines are implemented." },
+      { title: "Performance Monitoring", description: "Service quality, cost control, and guest outcomes are reviewed in cycles." },
+      { title: "Growth Optimization", description: "Brand positioning and strategic growth initiatives are continuously enhanced." },
     ],
     benefitCards: [
-      {
-        icon: "team",
-        title: "Pre-Vetted Talent",
-        description: "Access qualified hospitality professionals with verified role readiness.",
-      },
-      {
-        icon: "clock",
-        title: "Reduced Time-to-Hire",
-        description: "Fill critical roles faster with structured recruitment workflows.",
-      },
-      {
-        icon: "shield",
-        title: "Lower Hiring Risk",
-        description: "Assessment-led selection lowers mismatch and early turnover.",
-      },
-      {
-        icon: "chart",
-        title: "Scalable Workforce",
-        description: "Build staffing depth for peak seasons and expansion plans.",
-      },
+      { icon: "shield", title: "Operational Discipline", description: "Structured governance for consistent service delivery." },
+      { icon: "chart", title: "Revenue Visibility", description: "Performance-led tracking for better financial control." },
+      { icon: "clock", title: "Process Reliability", description: "Reduced operational gaps through standardized workflows." },
+      { icon: "team", title: "Scalable Management", description: "Frameworks that support expansion without quality dilution." },
     ],
     whyChoosePoints: [
-      "Hospitality-specific talent expertise",
-      "Structured recruitment governance",
-      "Operationally relevant candidate assessments",
-      "Retention-focused placement strategy",
+      "Integrated operations and performance management",
+      "Hospitality-first process restructuring expertise",
+      "Guest experience and profitability alignment",
+      "Long-term growth-focused governance model",
     ],
     stats: [
-      { label: "Hiring Cycles Managed", value: 350, suffix: "+" },
-      { label: "Avg. Time Reduction", value: 42, suffix: "%" },
-      { label: "Successful Placements", value: 1200, suffix: "+" },
+      { label: "Properties Supported", value: 95, suffix: "+" },
+      { label: "Avg. SOP Uplift", value: 41, suffix: "%" },
+      { label: "Operational Reviews", value: 600, suffix: "+" },
+    ],
+  },
+  "Recruitment & Placement": {
+    tagline: "Specialized Hospitality Manpower with Compliance Assurance",
+    overviewParagraphs: [
+      "We provide recruitment and manpower supply services for hospitality and allied industries with a focus on role-fit, reliability, and deployment readiness.",
+      "Our model covers permanent, temporary, and contractual staffing with pre-deployment screening and evaluation.",
+      "All engagements are executed with labor compliance discipline and ethical workforce management standards.",
+    ],
+    targetAudience: [
+      "Hotels and restaurants scaling workforce capacity",
+      "Hospitality groups requiring outsourced manpower deployment",
+      "Businesses hiring both executive and operational roles",
+    ],
+    process: [
+      { title: "Talent Requirement Mapping", description: "Role needs, staffing levels, and competency expectations are defined." },
+      { title: "Sourcing & Screening", description: "Candidates are sourced, evaluated, and shortlisted against service standards." },
+      { title: "Compliance Verification", description: "Documentation and labor law checks are completed before deployment." },
+      { title: "Deployment & Onboarding", description: "Selected workforce is deployed with role-level onboarding support." },
+      { title: "Performance Follow-up", description: "Ongoing monitoring helps improve retention and delivery quality." },
+    ],
+    benefitCards: [
+      { icon: "team", title: "Skilled Workforce", description: "Hospitality-ready professionals across key departments." },
+      { icon: "clock", title: "Faster Fulfillment", description: "Reduced hiring cycle time with structured pipelines." },
+      { icon: "shield", title: "Compliance-Ready Hiring", description: "Labor and documentation controls at every stage." },
+      { icon: "spark", title: "Deployment Reliability", description: "Performance-driven manpower placement quality." },
+    ],
+    whyChoosePoints: [
+      "Hospitality domain-focused hiring process",
+      "Permanent, temporary, and contract staffing capabilities",
+      "Pre-deployment screening and evaluation framework",
+      "Regulatory and documentation compliance discipline",
+    ],
+    stats: [
+      { label: "Profiles Evaluated", value: 12000, suffix: "+" },
+      { label: "Successful Placements", value: 1800, suffix: "+" },
+      { label: "Avg. Hiring Speed Gain", value: 42, suffix: "%" },
     ],
   },
   "Payroll & Compliance": {
-    tagline: "Accurate Payroll, Confident Compliance",
-    heroImage:
-      "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=2200&q=80",
-    overviewImage:
-      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1800&q=80",
+    tagline: "Accurate Payroll and Statutory Compliance Without Operational Risk",
     overviewParagraphs: [
-      "Payroll & Compliance ensures your hospitality workforce is managed with precision, transparency, and legal alignment.",
-      "We handle payroll workflows, statutory obligations, and documentation controls tailored to hospitality shift structures.",
-      "The result is reduced compliance exposure and predictable payroll operations every cycle.",
+      "Our payroll and statutory compliance services cover salary and wage processing, PF, ESIC, PT, TDS, gratuity, bonus, and regulatory documentation.",
+      "We design secure, confidential, and repeatable workflows that reduce errors and legal exposure.",
+      "This ensures every payroll cycle is accurate, audit-ready, and aligned with applicable labor regulations.",
     ],
     targetAudience: [
-      "Hotel groups with multi-shift staff operations",
-      "Hospitality companies with compliance audit requirements",
-      "Businesses seeking payroll accuracy at scale",
+      "Hospitality businesses managing multi-shift payroll",
+      "Organizations needing audit-ready statutory records",
+      "Management teams seeking legal-risk reduction",
     ],
     process: [
-      {
-        title: "Compliance Assessment",
-        description: "We evaluate current payroll and statutory posture against required standards.",
-      },
-      {
-        title: "Policy Alignment",
-        description: "Payroll rules and controls are mapped to your labor and contract structures.",
-      },
-      {
-        title: "Payroll Execution",
-        description: "Accurate payroll processing is managed with reconciliation checkpoints.",
-      },
-      {
-        title: "Audit & Validation",
-        description: "Compliance records are reviewed for errors, gaps, and risk signals.",
-      },
-      {
-        title: "Continuous Governance",
-        description: "Regular updates and controls ensure sustained compliance readiness.",
-      },
+      { title: "Compliance Audit", description: "Current payroll and statutory posture is assessed for risk and gaps." },
+      { title: "Rulebook Alignment", description: "Payroll, deductions, and documentation rules are formalized." },
+      { title: "Cycle Processing", description: "Salary and wage processing is executed with verification checkpoints." },
+      { title: "Regulatory Filing", description: "PF, ESIC, PT, TDS and statutory submissions are managed." },
+      { title: "Audit Support", description: "Documentation and reconciliation support are maintained continuously." },
     ],
     benefitCards: [
-      { icon: "shield", title: "Regulatory Assurance", description: "Minimize compliance gaps and reduce legal risk." },
-      { icon: "chart", title: "Financial Accuracy", description: "Improve payroll precision and reporting confidence." },
-      { icon: "clock", title: "Process Efficiency", description: "Reduce administrative overhead with structured workflows." },
-      { icon: "team", title: "Employee Trust", description: "Ensure timely and accurate salary experiences for staff." },
+      { icon: "chart", title: "Payroll Accuracy", description: "Reduced manual errors and stronger reconciliation quality." },
+      { icon: "shield", title: "Legal Compliance", description: "Structured adherence to applicable statutory requirements." },
+      { icon: "clock", title: "Operational Efficiency", description: "Faster cycle completion with lower admin overhead." },
+      { icon: "team", title: "Employee Confidence", description: "Consistent and reliable salary experience for teams." },
     ],
     whyChoosePoints: [
-      "Hospitality payroll complexity expertise",
-      "Compliance-first governance model",
-      "Error-reduction process controls",
-      "Audit-ready records and workflows",
+      "End-to-end payroll processing and compliance expertise",
+      "Confidential and process-controlled delivery model",
+      "Comprehensive statutory documentation support",
+      "Audit-ready governance and reporting systems",
     ],
     stats: [
       { label: "Payroll Records Managed", value: 50000, suffix: "+" },
       { label: "Compliance Accuracy", value: 99, suffix: "%" },
-      { label: "Audit Interventions", value: 180, suffix: "+" },
+      { label: "Statutory Filings", value: 3000, suffix: "+" },
     ],
   },
   "Hospitality Consulting": {
-    tagline: "Strategy That Converts Into Operational Results",
-    heroImage:
-      "https://images.unsplash.com/photo-1552581234-26160f608093?auto=format&fit=crop&w=2200&q=80",
-    overviewImage:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1800&q=80",
+    tagline: "Strategic Advisory for Operational Excellence and Profitable Growth",
     overviewParagraphs: [
-      "Our consulting service helps hospitality brands solve structural performance challenges and unlock growth.",
-      "From service design and profitability to guest experience frameworks, we build pragmatic action plans.",
-      "Every recommendation is implementation-ready and measurable against your business KPIs.",
+      "Our consulting and advisory division supports hospitality businesses with operational audits, revenue optimization, feasibility studies, and performance improvement planning.",
+      "We help leadership teams establish service standards, business development strategy, and measurable execution frameworks.",
+      "Every recommendation is designed for practical implementation and sustainable business impact.",
     ],
     targetAudience: [
-      "Hotels improving operating margins",
-      "Hospitality groups redesigning service models",
-      "Leadership teams planning strategic transformation",
+      "Hospitality owners planning strategic transformation",
+      "Operations teams improving service and profitability",
+      "Businesses evaluating expansion and feasibility models",
     ],
-    process: defaultProcess,
+    process: [
+      { title: "Business Discovery", description: "Current performance, market conditions, and growth goals are evaluated." },
+      { title: "Diagnostic Audit", description: "Operations, service standards, and revenue drivers are assessed." },
+      { title: "Strategy Blueprint", description: "Prioritized action plans and target outcomes are finalized." },
+      { title: "Execution Enablement", description: "Implementation support is provided to teams and leadership." },
+      { title: "Review & Scaling", description: "Outcomes are measured and strategies refined for long-term growth." },
+    ],
     benefitCards: [
-      { icon: "chart", title: "Better Business Clarity", description: "Make decisions with structured insights and benchmarks." },
-      { icon: "spark", title: "Service Innovation", description: "Modernize guest and operations workflows intelligently." },
-      { icon: "team", title: "Leadership Alignment", description: "Unify teams around clear execution priorities." },
-      { icon: "shield", title: "Sustainable Growth", description: "Build resilient systems beyond one-time fixes." },
+      { icon: "chart", title: "Operational Clarity", description: "Structured insights for stronger decision-making." },
+      { icon: "spark", title: "Service Innovation", description: "Modernized standards for premium guest experience." },
+      { icon: "team", title: "Leadership Alignment", description: "Unified action across departments and management." },
+      { icon: "shield", title: "Sustainable Growth", description: "Scalable strategies beyond short-term interventions." },
     ],
     whyChoosePoints: [
-      "Consulting backed by operational reality",
-      "Hospitality-first strategic frameworks",
-      "Clear accountability and reporting",
-      "Measured implementation outcomes",
+      "Data-backed advisory with execution relevance",
+      "Hospitality-focused growth and standards expertise",
+      "Balanced focus on guest experience and profitability",
+      "Clear KPI-oriented implementation governance",
     ],
     stats: [
       { label: "Consulting Engagements", value: 210, suffix: "+" },
       { label: "Avg. Performance Lift", value: 31, suffix: "%" },
-      { label: "Markets Supported", value: 18, suffix: "" },
+      { label: "Growth Programs Delivered", value: 140, suffix: "+" },
     ],
   },
   "Guest Management": {
-    tagline: "Deliver Consistent, Memorable Guest Journeys",
-    heroImage:
-      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=2200&q=80",
-    overviewImage:
-      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1800&q=80",
+    tagline: "Guest and Event Management Designed for Seamless Experience Delivery",
     overviewParagraphs: [
-      "Guest Management focuses on creating reliable, high-quality guest interactions across every touchpoint.",
-      "We standardize communication, service response, and escalation protocols to elevate overall experience.",
-      "This results in improved guest satisfaction, loyalty, and review performance.",
+      "Our guest and event management services support corporate and social occasions with end-to-end coordination and on-ground hospitality supervision.",
+      "We handle conference support, exhibition logistics, travel coordination, and guest assistance with attention to detail.",
+      "The result is smooth execution, strong guest satisfaction, and professional representation at every touchpoint.",
     ],
     targetAudience: [
-      "Properties seeking higher guest retention",
-      "Teams improving review and feedback scores",
-      "Hospitality brands standardizing service quality",
+      "Corporate institutions hosting conferences or exhibitions",
+      "Hospitality businesses managing high-value guest movements",
+      "Event organizers requiring reliable hospitality supervision",
     ],
     process: [
-      {
-        title: "Journey Mapping",
-        description: "We map the guest lifecycle from booking to post-stay feedback.",
-      },
-      {
-        title: "Service Standard Design",
-        description: "Touchpoint standards and response protocols are defined.",
-      },
-      {
-        title: "Team Enablement",
-        description: "Frontline teams are trained for consistent communication and care.",
-      },
-      {
-        title: "Feedback Loop Setup",
-        description: "Guest feedback mechanisms are integrated into operations.",
-      },
-      {
-        title: "Experience Optimization",
-        description: "Insights are used to continuously improve guest satisfaction outcomes.",
-      },
+      { title: "Requirement Briefing", description: "Event scope, guest profile, and logistical expectations are defined." },
+      { title: "Coordination Planning", description: "Travel, guest movement, and support workflows are structured." },
+      { title: "Execution Team Setup", description: "On-ground teams are assigned with role-level accountability." },
+      { title: "Live Event Supervision", description: "Real-time coordination ensures issue-free guest experience." },
+      { title: "Post-Event Review", description: "Feedback and execution insights are captured for improvement." },
     ],
     benefitCards: [
-      { icon: "spark", title: "Enhanced Guest Satisfaction", description: "Create service moments that exceed expectations." },
-      { icon: "chart", title: "Higher Review Scores", description: "Improve sentiment with proactive experience design." },
-      { icon: "team", title: "Consistent Service Delivery", description: "Align teams to one quality standard across shifts." },
-      { icon: "clock", title: "Faster Service Response", description: "Reduce delays with clearer communication pathways." },
+      { icon: "spark", title: "Seamless Guest Journeys", description: "Smooth coordination from arrival to closure." },
+      { icon: "clock", title: "Execution Precision", description: "Reduced delays through proactive on-ground control." },
+      { icon: "team", title: "Professional Representation", description: "Premium hospitality handling at every interaction." },
+      { icon: "chart", title: "Quality Outcomes", description: "Higher satisfaction through detail-oriented supervision." },
     ],
     whyChoosePoints: [
-      "Guest-experience design specialists",
-      "Operationalized service standards",
-      "Data-informed quality improvement",
-      "Frontline execution support",
+      "Corporate and social event hospitality expertise",
+      "Travel and guest coordination capabilities",
+      "On-ground supervision for consistent delivery quality",
+      "Experience-focused execution discipline",
     ],
     stats: [
-      { label: "Guest Journeys Optimized", value: 90000, suffix: "+" },
-      { label: "Response Time Improvement", value: 37, suffix: "%" },
-      { label: "Avg. Rating Lift", value: 1.4, suffix: " pts" },
+      { label: "Guest Interactions Managed", value: 90000, suffix: "+" },
+      { label: "Event Assignments", value: 740, suffix: "+" },
+      { label: "Response Efficiency Gain", value: 37, suffix: "%" },
     ],
   },
   "Hotel Sales & Business Development": {
-    tagline: "Accelerate Occupancy and Revenue Growth",
-    heroImage:
-      "https://images.unsplash.com/photo-1460353581641-37baddab0fa2?auto=format&fit=crop&w=2200&q=80",
-    overviewImage:
-      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1800&q=80",
+    tagline: "Revenue Growth Through Strategic Sales and Business Development",
     overviewParagraphs: [
-      "This service builds growth systems for hospitality brands through structured sales strategies and channel partnerships.",
-      "We identify demand segments, strengthen funnel performance, and improve conversion efficiency.",
-      "Our approach balances short-term revenue gains with long-term portfolio growth.",
+      "We partner with hotels and hospitality establishments through commission-based sales and marketing support aimed at measurable revenue growth.",
+      "Our work includes corporate tie-ups, lead generation, room-night sales, and market expansion initiatives.",
+      "This creates sustainable demand pipelines, stronger market presence, and long-term commercial partnerships.",
     ],
     targetAudience: [
-      "Hotels targeting occupancy growth",
-      "Sales teams improving conversion rates",
-      "Hospitality groups expanding market share",
+      "Hotels targeting occupancy and revenue growth",
+      "Properties expanding B2B and corporate business",
+      "Hospitality teams seeking external sales acceleration",
     ],
     process: [
-      {
-        title: "Market Opportunity Audit",
-        description: "Demand segments and revenue leakages are identified.",
-      },
-      {
-        title: "Sales Blueprint",
-        description: "Go-to-market plans and sales KPIs are defined.",
-      },
-      {
-        title: "Channel Activation",
-        description: "Corporate and partner channels are activated for pipeline growth.",
-      },
-      {
-        title: "Conversion Optimization",
-        description: "Offer structure and sales scripts are tuned for better closure rates.",
-      },
-      {
-        title: "Revenue Tracking",
-        description: "Performance dashboards drive iterative strategy adjustments.",
-      },
+      { title: "Market Mapping", description: "Demand segments and high-value opportunity zones are identified." },
+      { title: "Partnership Strategy", description: "Corporate tie-up and channel development plans are structured." },
+      { title: "Sales Activation", description: "Lead funnels, outreach, and conversion actions are executed." },
+      { title: "Revenue Optimization", description: "Sales performance and room-night metrics are continuously tuned." },
+      { title: "Expansion Planning", description: "New market initiatives are rolled out for sustained growth." },
     ],
     benefitCards: [
-      { icon: "chart", title: "Stronger Revenue Pipeline", description: "Grow predictable demand through diversified channels." },
-      { icon: "spark", title: "Improved Occupancy Mix", description: "Balance transient, corporate, and long-stay opportunities." },
-      { icon: "team", title: "Sales Team Performance", description: "Equip teams with high-conversion sales frameworks." },
-      { icon: "shield", title: "Strategic Growth Control", description: "Scale with stronger reporting and account discipline." },
+      { icon: "chart", title: "Revenue Enhancement", description: "Focused strategies to improve room-night performance." },
+      { icon: "team", title: "Corporate Tie-Ups", description: "Long-term partnerships with business travel demand sources." },
+      { icon: "spark", title: "Lead Generation Engine", description: "Consistent qualified pipeline development." },
+      { icon: "shield", title: "Sustainable Growth", description: "Market expansion with controlled commercial execution." },
     ],
     whyChoosePoints: [
-      "Hospitality revenue growth playbooks",
-      "Channel partnership strategy expertise",
-      "Data-driven conversion optimization",
-      "Execution support for sales leaders",
+      "Commission-aligned growth partnership model",
+      "Corporate tie-up and market expansion capabilities",
+      "Lead-to-revenue conversion framework",
+      "Performance-driven business development execution",
     ],
     stats: [
-      { label: "Sales Campaigns Deployed", value: 420, suffix: "+" },
+      { label: "Sales Campaigns", value: 420, suffix: "+" },
       { label: "Avg. Conversion Lift", value: 29, suffix: "%" },
-      { label: "Corporate Accounts Activated", value: 640, suffix: "+" },
+      { label: "Corporate Accounts", value: 640, suffix: "+" },
     ],
   },
   "External Training Programs": {
-    tagline: "Upskill Teams for Consistent Service Excellence",
-    heroImage:
-      "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=2200&q=80",
-    overviewImage:
-      "https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=1800&q=80",
+    tagline: "Customized Hospitality Training for Measurable Team Performance",
     overviewParagraphs: [
-      "External Training Programs provide role-specific capability building for hospitality teams.",
-      "We deliver structured modules for front office, housekeeping, F&B, leadership, and service recovery.",
-      "Training outcomes are linked to service quality, guest feedback, and team productivity metrics.",
+      "Our training and skill development programs are customized to organizational requirements across operations, customer service, communication, and leadership.",
+      "Programs are practical, engaging, and built for direct workplace application across hospitality teams.",
+      "We align learning outcomes to measurable improvements in service standards and performance consistency.",
     ],
     targetAudience: [
-      "Hotels improving service quality consistency",
-      "Teams onboarding new staff cohorts",
-      "Operations leaders building supervisory capability",
+      "Hospitality teams improving service standards",
+      "Organizations upskilling frontline and supervisory staff",
+      "Businesses implementing structured capability development",
     ],
     process: [
-      {
-        title: "Skills Gap Analysis",
-        description: "We assess current capability levels against role expectations.",
-      },
-      {
-        title: "Curriculum Design",
-        description: "Custom training tracks are built for each functional team.",
-      },
-      {
-        title: "Workshop Delivery",
-        description: "Interactive, scenario-based sessions are facilitated on-site or hybrid.",
-      },
-      {
-        title: "Competency Evaluation",
-        description: "Post-training assessments validate learning transfer.",
-      },
-      {
-        title: "Performance Reinforcement",
-        description: "Follow-up coaching ensures sustained behavior change.",
-      },
+      { title: "Training Needs Analysis", description: "Role-level skill gaps and performance needs are identified." },
+      { title: "Program Design", description: "Customized modules are built for teams and management levels." },
+      { title: "Workshop Delivery", description: "Interactive and practical sessions are delivered in structured batches." },
+      { title: "Assessment & Feedback", description: "Learning outcomes are evaluated through applied assessments." },
+      { title: "Reinforcement", description: "Post-program support ensures long-term behavior and quality gains." },
     ],
     benefitCards: [
-      { icon: "team", title: "Skilled Service Teams", description: "Raise frontline confidence and delivery consistency." },
-      { icon: "spark", title: "Better Guest Interactions", description: "Improve communication, empathy, and response quality." },
-      { icon: "chart", title: "Measurable Learning Outcomes", description: "Track progress with competency-based assessments." },
-      { icon: "clock", title: "Faster Onboarding", description: "Bring new hires to productivity with structured learning tracks." },
+      { icon: "team", title: "Team Capability Lift", description: "Role-specific upskilling with practical application." },
+      { icon: "spark", title: "Service Excellence", description: "Improved guest-facing behavior and communication quality." },
+      { icon: "chart", title: "Measurable Outcomes", description: "Performance-linked learning and assessment model." },
+      { icon: "clock", title: "Faster Readiness", description: "Accelerated onboarding and productivity for new teams." },
     ],
     whyChoosePoints: [
-      "Hospitality-specific training content",
-      "Role-based implementation approach",
-      "Practical, scenario-led learning",
-      "Measurable capability improvement",
+      "Customized organization-specific program design",
+      "Operations, service, soft skills, and leadership coverage",
+      "Practical and engaging delivery methodology",
+      "Performance-oriented capability improvement outcomes",
     ],
     stats: [
       { label: "Professionals Trained", value: 15000, suffix: "+" },
-      { label: "Avg. Skill Lift", value: 34, suffix: "%" },
-      { label: "Training Hours Delivered", value: 2400, suffix: "+" },
-    ],
-  },
-  "Hotel Operations Management": {
-    tagline: "Operate Hotels with Precision and Control",
-    heroImage:
-      "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=2200&q=80",
-    overviewImage:
-      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1800&q=80",
-    overviewParagraphs: [
-      "Hotel Operations Management provides hands-on governance to improve process reliability and service delivery.",
-      "We optimize SOP execution, shift coordination, team accountability, and departmental performance rhythms.",
-      "Our model ensures day-to-day operations remain efficient, guest-focused, and financially controlled.",
-    ],
-    targetAudience: [
-      "Properties with operational inconsistency issues",
-      "Teams building stronger SOP adherence",
-      "Leadership improving cross-department coordination",
-    ],
-    process: defaultProcess,
-    benefitCards: [
-      { icon: "shield", title: "Operational Discipline", description: "Run services with clear standards and accountability." },
-      { icon: "clock", title: "Higher Process Efficiency", description: "Reduce delays and repetitive operational friction." },
-      { icon: "chart", title: "Improved Cost Control", description: "Track and optimize resource utilization in real time." },
-      { icon: "team", title: "Stronger Team Coordination", description: "Align departments around execution targets." },
-    ],
-    whyChoosePoints: [
-      "Hands-on operations expertise",
-      "SOP optimization framework",
-      "Cross-functional execution rigor",
-      "Performance-led governance model",
-    ],
-    stats: [
-      { label: "Hotels Operated", value: 95, suffix: "+" },
-      { label: "SOP Compliance Lift", value: 41, suffix: "%" },
-      { label: "Cost Efficiency Gain", value: 22, suffix: "%" },
+      { label: "Training Hours", value: 2400, suffix: "+" },
+      { label: "Avg. Skill Improvement", value: 34, suffix: "%" },
     ],
   },
   "Companionship & Social Support Services": {
-    tagline: "Compassionate Support with Professional Standards",
-    heroImage:
-      "https://images.unsplash.com/photo-1516307365426-bea591f05011?auto=format&fit=crop&w=2200&q=80",
-    overviewImage:
-      "https://images.unsplash.com/photo-1576765608622-067973a79f53?auto=format&fit=crop&w=1800&q=80",
+    tagline: "Lawful Lifestyle Support and Companionship with Dignity and Care",
     overviewParagraphs: [
-      "This service supports hospitality environments where emotional care and social engagement are part of the guest experience.",
-      "We design and deliver structured companionship support with dignity, empathy, and safety protocols.",
-      "Our approach balances personal care quality with operational accountability.",
+      "BAVESTA provides lawful companionship, concierge, and lifestyle support services designed to ensure safety, comfort, and convenience.",
+      "Support includes travel accompaniment, movie and shopping companionship, event presence support, non-clinical medical appointment assistance, virtual companionship, and domestic support assistance.",
+      "All services are delivered in strict compliance with applicable laws and ethical standards while prioritizing client dignity and safety.",
     ],
     targetAudience: [
-      "Senior hospitality and assisted living environments",
-      "Care-focused guest programs in wellness properties",
-      "Brands prioritizing social support experiences",
+      "Individuals requiring safe lifestyle assistance",
+      "Clients seeking reliable non-clinical companionship support",
+      "Families and organizations prioritizing dignified care-led services",
     ],
     process: [
-      {
-        title: "Needs Discovery",
-        description: "We evaluate guest support requirements and care priorities.",
-      },
-      {
-        title: "Program Design",
-        description: "Companionship plans are tailored to emotional and social well-being goals.",
-      },
-      {
-        title: "Care Team Matching",
-        description: "Trained personnel are aligned to guest personality and care needs.",
-      },
-      {
-        title: "Active Support Delivery",
-        description: "Daily social engagement and support activities are managed consistently.",
-      },
-      {
-        title: "Review & Adjustment",
-        description: "Feedback-driven refinements ensure meaningful and safe outcomes.",
-      },
+      { title: "Needs Assessment", description: "Lifestyle and support needs are evaluated with confidentiality." },
+      { title: "Service Planning", description: "A lawful and ethical support plan is tailored to client preferences." },
+      { title: "Support Matching", description: "Appropriate professionals are assigned for each engagement." },
+      { title: "Safe Delivery", description: "Services are executed with dignity, professionalism, and supervision." },
+      { title: "Review & Continuity", description: "Feedback-led refinements keep support relevant and reliable." },
     ],
     benefitCards: [
-      { icon: "heart", title: "Human-Centered Support", description: "Deliver care rooted in empathy and dignity." },
-      { icon: "shield", title: "Safe Service Standards", description: "Maintain reliability with structured care governance." },
-      { icon: "team", title: "Trusted Companionship", description: "Build emotional comfort through consistent support teams." },
-      { icon: "spark", title: "Well-Being Enhancement", description: "Improve social engagement and daily experience quality." },
+      { icon: "heart", title: "Dignity-First Support", description: "Client comfort and respect remain central in every interaction." },
+      { icon: "shield", title: "Ethical & Lawful Framework", description: "Service delivery aligned to legal and compliance standards." },
+      { icon: "team", title: "Trusted Companionship", description: "Reliable support through trained professional personnel." },
+      { icon: "spark", title: "Lifestyle Convenience", description: "Flexible assistance for travel, events, and daily support needs." },
     ],
     whyChoosePoints: [
-      "Professional care-oriented hospitality model",
-      "Compassion-first execution approach",
-      "Safety, ethics, and service compliance",
-      "Personalized support planning",
+      "Client safety, dignity, and confidentiality first",
+      "Legally compliant companionship service model",
+      "Professional concierge and lifestyle support standards",
+      "Personalized and ethical service execution",
     ],
     stats: [
-      { label: "Support Programs Delivered", value: 680, suffix: "+" },
-      { label: "Guest Satisfaction", value: 97, suffix: "%" },
-      { label: "Care Specialists Network", value: 240, suffix: "+" },
+      { label: "Support Programs", value: 680, suffix: "+" },
+      { label: "Client Satisfaction", value: 97, suffix: "%" },
+      { label: "Care Specialists", value: 240, suffix: "+" },
     ],
   },
 };
@@ -453,21 +329,8 @@ const fallbackBenefitCards = [
   { icon: "spark", title: "Continuous Improvement", description: "Data-led refinement cycles to keep service standards ahead." },
 ];
 
-const serviceImageByTitle = {
-  "Recruitment & Placement": encodeURI("/services/requirement&&placement.png"),
-  "Payroll & Compliance": encodeURI("/services/Payroll & Compliance .png"),
-  "Hospitality Consulting": encodeURI("/services/Hospitality Consulting .png"),
-  "Guest Management": encodeURI("/services/Guest Management .png"),
-  "Hotel Sales & Business Development": encodeURI("/services/Hotel Sales & Business Development .png"),
-  "External Training Programs": encodeURI("/services/External Training Programs .png"),
-  "Hotel Operations Management": encodeURI("/services/Hotel Operations Management .png"),
-  "Companionship & Social Support Services": encodeURI("/services/Companionship & Social Support Services.jpg"),
-};
-
 export const getServiceDetailContent = (service) => {
   const mapped = service ? serviceDetailContentMap[service.title] || {} : {};
-  const mappedServiceImage =
-    (service && serviceImageByTitle[service.title]) || serviceImageByTitle["Recruitment & Placement"];
 
   const benefitCards = mapped.benefitCards?.length
     ? mapped.benefitCards
@@ -478,28 +341,22 @@ export const getServiceDetailContent = (service) => {
       }));
 
   return {
-    tagline: mapped.tagline || "Enterprise-grade hospitality service delivery",
-    heroImage:
-      mappedServiceImage ||
-      mapped.heroImage ||
-      "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=2200&q=80",
-    overviewImage:
-      mappedServiceImage ||
-      mapped.overviewImage ||
-      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1800&q=80",
+    tagline: mapped.tagline || "Integrated hospitality service delivery with measurable outcomes.",
+    heroImage: getServiceImage(service?.title),
+    overviewImage: getServiceImage(service?.title),
     overviewParagraphs:
       mapped.overviewParagraphs ||
       [
-        service?.description || "This service is built for hospitality brands that need reliable operational excellence.",
-        "We combine strategic planning with hands-on implementation to deliver predictable results.",
-        "Execution is aligned to guest satisfaction, compliance, and performance outcomes.",
+        service?.description || "This service is designed for hospitality businesses requiring disciplined execution.",
+        "We combine strategy, operations, and compliance to deliver sustainable performance outcomes.",
+        "Every engagement is built around reliability, service quality, and long-term value creation.",
       ],
     targetAudience:
       mapped.targetAudience ||
       [
-        "Hospitality operators seeking scalable execution",
+        "Hospitality operators seeking scalable systems",
         "Leadership teams focused on service quality",
-        "Organizations requiring structured process governance",
+        "Organizations requiring compliant execution models",
       ],
     process: mapped.process || defaultProcess,
     benefitCards: benefitCards.length ? benefitCards : fallbackBenefitCards,
@@ -507,9 +364,9 @@ export const getServiceDetailContent = (service) => {
       mapped.whyChoosePoints ||
       [
         "Deep hospitality operations experience",
-        "Structured service governance model",
-        "Execution-focused professional teams",
-        "Clear KPI and compliance alignment",
+        "Structured governance and compliance discipline",
+        "Client-centric execution model",
+        "Measurable performance improvement focus",
       ],
     stats: mapped.stats || [
       { label: "Projects Delivered", value: 300, suffix: "+" },
@@ -517,9 +374,9 @@ export const getServiceDetailContent = (service) => {
       { label: "Industry Specialists", value: 120, suffix: "+" },
     ],
     cta: {
-      headline: "Let’s Work Together",
+      headline: "Let's Work Together",
       subtext:
-        "Connect with our team to design a tailored execution plan for your hospitality goals.",
+        "Connect with our team to design a tailored engagement plan for your hospitality goals.",
       primaryLabel: "Request Consultation",
       primaryHref: "/contact?inquiry=consultation",
       secondaryLabel: "Contact Us",

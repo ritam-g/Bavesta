@@ -116,13 +116,27 @@ function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-white/20 pt-9 text-center">
-          <p className="font-display text-2xl font-semibold text-white sm:text-3xl lg:text-4xl">
-            BAVESTA HOSPITALITY - A COMPREHENSIVE SERVICE SOLUTION PROVIDER
-          </p>
-          <p className="mt-4 text-sm text-white/82 sm:text-base">
-            Copyright {new Date().getFullYear()} BAVESTA Hospitality Services Pvt. Ltd. All rights reserved.
-          </p>
+        <div className="mt-12 flex flex-col items-center gap-6 border-t border-white/20 pt-9 sm:flex-row sm:justify-between sm:gap-8 lg:gap-12">
+          <div className="flex items-center gap-4">
+            <img
+              src="/selected.png"
+              alt="BAVESTA Logo"
+              className="h-14 w-14 rounded-lg border border-[#d9d2c8] bg-white p-0.5 object-cover sm:h-16 sm:w-16"
+            />
+            <h3 className="font-display text-2xl font-semibold text-white sm:text-3xl lg:text-4xl">
+              BAVESTA HOSPITALITY
+            </h3>
+          </div>
+          <div className="text-center sm:text-right">
+            <p className="text-sm font-medium text-white/90 sm:text-base">
+              <a href="tel:+918187077401" className="hover:text-gold transition">(+91) 8187077401</a> |
+              <a href="tel:+919640771603" className="hover:text-gold transition">9640771603</a> |
+              <a href="tel:+917981088456" className="hover:text-gold transition">7981088456</a>
+            </p>
+            <p className="mt-2 text-sm text-white/82 sm:text-base">
+              Copyright {new Date().getFullYear()} BAVESTA Hospitality Services Pvt. Ltd. All rights reserved.
+            </p>
+          </div>
         </div>
       </div>
     </footer>

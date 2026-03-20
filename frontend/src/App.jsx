@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
-import QuoteFab from "./components/layout/QuoteFab";
+
 import AppRoutes from "./routes/AppRoutes";
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
       <main className="min-h-screen">
         <AppRoutes />
       </main>
-      {!adminRoute && <QuoteFab />}
+
       {!adminRoute && <Footer />}
     </div>
   );

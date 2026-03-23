@@ -23,7 +23,7 @@ function ContactBand() {
             <p className="mt-3 text-center text-base font-medium md:text-left lg:text-lg">bavestahospitality@gmail.com</p>
           </article>
 
-          <article className="border-[#c99e10] md:border-l md:px-8">
+          {/* <article className="border-[#c99e10] md:border-l md:px-8">
             <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-white/50 md:mx-0">
               <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="1.8">
                 <circle cx="12" cy="12" r="9" />
@@ -32,7 +32,7 @@ function ContactBand() {
             </div>
             <p className="mt-4 text-center text-lg font-semibold leading-tight md:text-left lg:text-xl">Mon - Sat 9.30 am to 6.00 pm</p>
             <p className="mt-3 text-center text-base md:text-left lg:text-lg">Sunday Closed</p>
-          </article>
+          </article> */}
 
           <article className="border-[#c99e10] md:border-l md:px-8">
             <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-white/50 md:mx-0">
@@ -41,7 +41,7 @@ function ContactBand() {
                 <circle cx="12" cy="10" r="3" />
               </svg>
             </div>
-            <p className="mt-4 text-center text-lg font-semibold leading-tight md:text-left lg:text-xl">Bengaluru</p>
+            <p className="mt-4 text-center text-lg font-semibold leading-tight md:text-left lg:text-xl">Hyerabad</p>
             <p className="mt-3 text-center text-base md:text-left lg:text-lg">India</p>
           </article>
         </div>

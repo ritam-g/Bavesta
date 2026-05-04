@@ -42,31 +42,31 @@ function Services() {
         image={getServiceImage("Hotel Sales & Business Development")}
       />
 
-      <section className="section-shell pb-20">
+      <section className="section-shell pb-20 mt-12">
         <SectionHeader
           kicker="Execution Model"
           title="How We Deliver"
           description="Every assignment is executed through structured governance, legal compliance controls, and measurable performance checkpoints."
         />
 
-        <div className="mt-8 grid gap-5 lg:grid-cols-[1.1fr_0.9fr]">
-          <article className="glass-panel p-7 sm:p-8">
-            <h3 className="font-display text-2xl font-bold text-pearl sm:text-3xl">Service Delivery Approach</h3>
-            <ul className="mt-5 space-y-3 text-sm leading-7 text-mist sm:text-base">
-              <li className="flex items-start gap-3">
-                <span className="mt-2 inline-block h-2 w-2 rounded-full bg-gold" />
+        <div className="mt-10 grid gap-6 lg:grid-cols-2">
+          <article className="glass-panel p-8 sm:p-10">
+            <h3 className="font-display text-2xl font-bold text-gray-900 sm:text-3xl">Service Delivery Approach</h3>
+            <ul className="mt-6 space-y-4 text-sm leading-relaxed text-gray-600 sm:text-base">
+              <li className="flex items-start gap-4">
+                <span className="mt-2.5 inline-block h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gray-400" />
                 <span>Structured management frameworks for scalable execution.</span>
               </li>
-              <li className="flex items-start gap-3">
-                <span className="mt-2 inline-block h-2 w-2 rounded-full bg-gold" />
+              <li className="flex items-start gap-4">
+                <span className="mt-2.5 inline-block h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gray-400" />
                 <span>Ethical, transparent, and legally compliant operational systems.</span>
               </li>
-              <li className="flex items-start gap-3">
-                <span className="mt-2 inline-block h-2 w-2 rounded-full bg-gold" />
+              <li className="flex items-start gap-4">
+                <span className="mt-2.5 inline-block h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gray-400" />
                 <span>Customized models for business outcomes and individual convenience.</span>
               </li>
-              <li className="flex items-start gap-3">
-                <span className="mt-2 inline-block h-2 w-2 rounded-full bg-gold" />
+              <li className="flex items-start gap-4">
+                <span className="mt-2.5 inline-block h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gray-400" />
                 <span>Performance visibility through disciplined reporting and review cycles.</span>
               </li>
             </ul>
@@ -76,11 +76,11 @@ function Services() {
         </div>
 
         {loading ? (
-          <p className="mt-10 text-mist">Loading services...</p>
+          <p className="mt-12 text-center text-gray-500">Loading services...</p>
         ) : (
-          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {services.map((service, index) => (
-              <ServiceCard key={service._id} service={service} delay={index * 0.04} />
+              <ServiceCard key={service._id} service={service} delay={index * 0.05} />
             ))}
           </div>
         )}

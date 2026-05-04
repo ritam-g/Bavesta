@@ -2,34 +2,28 @@ import { motion } from "framer-motion";
 
 function ClientsSection({ clients }) {
   return (
-    <section className="section-shell py-14 md:py-16">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.25 }}
-        transition={{ duration: 0.45 }}
-        className="rounded-[30px] border border-[#ddd8ce] bg-[#f8f7f4] px-5 py-10 shadow-[0_20px_45px_-35px_rgba(27,35,47,0.35)] sm:px-10"
-      >
-        <h2 className="text-center font-display text-3xl font-semibold text-[#1d2431] sm:text-4xl">Our Clients</h2>
-        <p className="mx-auto mt-4 max-w-4xl text-center text-base leading-7 text-[#404958] sm:text-lg sm:leading-8">
-          We collaborate with established hospitality and enterprise partners who trust our structured execution model and consistent service quality.
+    <section className="bg-white py-16 sm:py-24 border-b border-gray-100">
+      <div className="section-shell">
+        <h2 className="text-center font-display text-2xl font-semibold text-gray-900 sm:text-3xl">Trusted by Industry Leaders</h2>
+        <p className="mx-auto mt-4 max-w-2xl text-center text-gray-600">
+          We collaborate with established enterprise partners who trust our structured execution model.
         </p>
 
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 flex flex-wrap justify-center gap-6 sm:gap-10">
           {clients.map((client, index) => (
-            <motion.article
+            <motion.div
               key={client}
-              initial={{ opacity: 0, y: 18 }}
+              initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.4, delay: index * 0.04 }}
-              className="flex h-20 items-center justify-center rounded-2xl border border-[#dfd9ce] bg-white px-4 text-center font-display text-2xl font-semibold text-[#17304d] shadow-[0_15px_35px_-28px_rgba(18,29,44,0.45)] sm:text-3xl"
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.05 }}
+              className="flex h-16 w-36 items-center justify-center rounded-xl bg-gray-50 px-4 text-center font-display text-xl font-bold text-gray-400 grayscale transition hover:grayscale-0 hover:bg-gray-100 hover:text-gray-800"
             >
               {client}
-            </motion.article>
+            </motion.div>
           ))}
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }

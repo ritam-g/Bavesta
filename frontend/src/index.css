@@ -5,8 +5,8 @@
 @tailwind utilities;
 
 :root {
-  color: #1f2734;
-  background: #efefec;
+  color: #111827;
+  background: #f9fafb;
 }
 
 html {
@@ -17,11 +17,8 @@ body {
   margin: 0;
   min-height: 100vh;
   font-family: "Plus Jakarta Sans", sans-serif;
-  color: #1f2734;
-  background:
-    radial-gradient(circle at 5% 8%, rgba(242, 197, 112, 0.16), transparent 28%),
-    radial-gradient(circle at 88% 26%, rgba(86, 107, 145, 0.09), transparent 30%),
-    #efefec;
+  color: #111827;
+  background-color: #f9fafb;
 }
 
 a {
@@ -30,40 +27,17 @@ a {
 }
 
 .section-shell {
-  @apply mx-auto w-full max-w-[1480px] px-4 sm:px-6 lg:px-8;
+  @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
 }
 
 .input-base {
-  @apply w-full rounded-xl border border-[#c9c3b8] bg-white px-4 py-3 text-sm text-[#1f2734] placeholder:text-[#8f95a1] outline-none transition focus:border-[#c9a56a] focus:ring-2 focus:ring-[#c9a56a]/35;
+  @apply w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 outline-none transition focus:border-gray-900 focus:ring-1 focus:ring-gray-900;
 }
 
 .glass-panel {
-  @apply rounded-2xl border border-[#345987]/50 shadow-luxe backdrop-blur-lg;
-  background-color: rgba(13, 33, 60, 0.76);
+  @apply rounded-xl border border-gray-100 bg-white p-6 shadow-sm;
 }
 
 .page-hero {
-  @apply relative overflow-hidden rounded-2xl border border-[#355b88]/50 bg-[#0b203c]/85 p-6 sm:p-8 lg:p-10;
-}
-
-.page-hero::before {
-  content: "";
-  position: absolute;
-  inset: -20% -10% auto auto;
-  width: 260px;
-  height: 260px;
-  border-radius: 9999px;
-  background: radial-gradient(circle, rgba(201, 165, 106, 0.28), transparent 62%);
-  pointer-events: none;
-}
-
-.page-hero::after {
-  content: "";
-  position: absolute;
-  inset: auto auto -30% -10%;
-  width: 300px;
-  height: 300px;
-  border-radius: 9999px;
-  background: radial-gradient(circle, rgba(53, 91, 136, 0.28), transparent 65%);
-  pointer-events: none;
+  @apply relative overflow-hidden rounded-2xl bg-gray-900 p-8 text-white sm:p-12;
 }

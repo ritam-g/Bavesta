@@ -24,7 +24,7 @@ function About() {
         image={getServiceImage("Hotel Operations Management")}
       />
 
-      <section className="section-shell pb-20">
+      <section className="section-shell pb-20 mt-12">
         <SectionHeader
           kicker="Who We Are"
           title="Structured, Scalable, Premium Hospitality Delivery"
@@ -33,8 +33,8 @@ function About() {
 
         <div className="mt-8 grid gap-5 lg:grid-cols-[1.2fr_0.8fr]">
           <article className="glass-panel p-7 sm:p-8">
-            <h2 className="font-display text-2xl font-bold text-pearl sm:text-3xl">Company Profile</h2>
-            <div className="mt-4 space-y-4 text-sm leading-7 text-mist sm:text-base">
+            <h2 className="font-display text-2xl font-bold text-gray-900 sm:text-3xl">Company Profile</h2>
+            <div className="mt-4 space-y-4 text-sm leading-relaxed text-gray-600 sm:text-base">
               {companyProfile.whoWeAre.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
@@ -60,8 +60,8 @@ function About() {
         <div className="grid gap-5 lg:grid-cols-2">
           <BulletPanel title="Why Choose BAVESTA" items={companyProfile.whyChooseUs} />
           <article className="glass-panel p-7">
-            <h3 className="font-display text-2xl font-bold text-pearl">Our Commitment</h3>
-            <p className="mt-5 text-sm leading-7 text-mist sm:text-base">{companyProfile.commitment}</p>
+            <h3 className="font-display text-2xl font-bold text-gray-900">Our Commitment</h3>
+            <p className="mt-5 text-sm leading-relaxed text-gray-600 sm:text-base">{companyProfile.commitment}</p>
           </article>
         </div>
       </section>

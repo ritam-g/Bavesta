@@ -9,32 +9,32 @@ function ServiceCard({ service, delay = 0, ctaLabel = "View Details" }) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 22 }}
+      initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.25 }}
-      transition={{ duration: 0.45, delay }}
-      whileHover={{ y: -5 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4, delay }}
+      className="h-full flex flex-col"
     >
-      <Card className="group h-full overflow-hidden border-white/10 p-0 transition hover:border-gold/35 hover:bg-white/[0.08]">
-        <div className="relative h-36 overflow-hidden border-b border-white/10 sm:h-40">
+      <Card className="group h-full flex flex-col overflow-hidden border-gray-200 p-0 transition hover:border-gray-300 hover:shadow-md bg-white">
+        <div className="relative h-48 overflow-hidden bg-gray-100">
           <div
             className="absolute inset-0 bg-cover bg-center transition duration-500 group-hover:scale-105"
             style={{ backgroundImage: `url(${imageUrl})` }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-midnight/35 via-midnight/45 to-midnight/90" />
-          <div className="relative flex items-start justify-between gap-4 p-5">
-            <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-gold/40 bg-gold/10 text-sm font-bold text-gold">
+          <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent" />
+          <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+            <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-white text-sm font-bold text-gray-900 shadow-sm">
               {getServiceBadge(service.title)}
             </span>
-            <span className="rounded-full border border-white/15 bg-midnight/50 px-3 py-1 text-xs font-semibold text-pearl/90">
+            <span className="rounded-full bg-gray-900/80 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
               {service.category}
             </span>
           </div>
         </div>
 
-        <div className="p-6">
-          <h3 className="font-display text-xl font-bold leading-tight text-pearl">{service.title}</h3>
-          <p className="mt-3 text-sm leading-6 text-mist">{service.description}</p>
+        <div className="flex flex-1 flex-col p-6">
+          <h3 className="font-display text-xl font-bold leading-tight text-gray-900">{service.title}</h3>
+          <p className="mt-3 flex-1 text-sm leading-relaxed text-gray-600 line-clamp-3">{service.description}</p>
 
           <div className="mt-6">
             <Link to={`/services/${service._id}`}>

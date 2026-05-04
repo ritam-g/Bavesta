@@ -35,7 +35,7 @@ const socialLinks = [
   },
   {
     name: "Instagram",
-    href: "https://www.instagram.com",
+    href: "https://www.instagram.com/bavestahospitalityservices",
     icon: (
       <>
         <rect x="4.5" y="4.5" width="15" height="15" rx="4.5" />

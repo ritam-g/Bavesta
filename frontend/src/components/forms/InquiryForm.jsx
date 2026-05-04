@@ -1,4 +1,4 @@
-﻿import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import Button from "../ui/Button";
 import api from "../../services/api";
@@ -103,11 +103,11 @@ function InquiryForm({ serviceId = "", heading = "Send an Inquiry", compact = fa
   };
 
   return (
-    <form className={`glass-panel ${compact ? "p-6" : "p-7 sm:p-8"}`} onSubmit={submit}>
-      <h3 className="font-display text-2xl font-bold text-pearl">{heading}</h3>
-      <p className="mt-2 text-sm text-mist">Tell us your business needs and our team will reach out with a tailored plan.</p>
+    <form className={`glass-panel ${compact ? "p-6" : "p-8 sm:p-10"}`} onSubmit={submit}>
+      <h3 className="font-display text-2xl font-bold text-gray-900">{heading}</h3>
+      <p className="mt-2 text-sm text-gray-600">Tell us your business needs and our team will reach out with a tailored plan.</p>
 
-      <div className="mt-6 space-y-3">
+      <div className="mt-6 space-y-4">
         <motion.div {...fieldMotion}>
           <input
             className="input-base"
@@ -160,14 +160,14 @@ function InquiryForm({ serviceId = "", heading = "Send an Inquiry", compact = fa
         </motion.div>
 
         {selectedService && (
-          <p className="rounded-lg border border-gold/25 bg-gold/10 px-3 py-2 text-xs text-gold">
+          <p className="rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-xs font-medium text-gray-700">
             Inquiry linked to: {selectedService.title}
           </p>
         )}
 
         <motion.div {...fieldMotion} transition={{ ...fieldMotion.transition, delay: 0.12 }}>
           <textarea
-            className="input-base min-h-28"
+            className="input-base min-h-28 py-3"
             name="message"
             placeholder="How can we support your hospitality operation?"
             value={form.message}
@@ -176,12 +176,12 @@ function InquiryForm({ serviceId = "", heading = "Send an Inquiry", compact = fa
           />
         </motion.div>
 
-        <Button type="submit" className="w-full" disabled={status.loading}>
+        <Button type="submit" className="w-full mt-2" disabled={status.loading}>
           {status.loading ? "Submitting..." : "Submit Inquiry"}
         </Button>
 
-        {status.success && <p className="text-sm text-green-300">{status.success}</p>}
-        {status.error && <p className="text-sm text-red-300">{status.error}</p>}
+        {status.success && <p className="text-sm font-medium text-green-600">{status.success}</p>}
+        {status.error && <p className="text-sm font-medium text-red-600">{status.error}</p>}
       </div>
     </form>
   );

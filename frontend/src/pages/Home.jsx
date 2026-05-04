@@ -2,18 +2,13 @@ import { useEffect, useMemo, useState } from "react";
 import Seo from "../components/Seo";
 import HeroShowcase from "../components/home/HeroShowcase";
 import ClientsSection from "../components/home/ClientsSection";
-import VoicesSection from "../components/home/VoicesSection";
 import StatsSection from "../components/home/StatsSection";
-import PartnersSection from "../components/home/PartnersSection";
-import InsightsSection from "../components/home/InsightsSection";
 import ContactBand from "../components/home/ContactBand";
 import api from "../services/api";
 import { companyProfile } from "../data/companyContent";
 import { getServiceImage, serviceFallback } from "../data/serviceData";
-import { roomData } from "../data/roomData";
 
 const clientLogos = ["GE", "IBM", "ICICI", "OLA", "TAJ", "ITC", "Radisson", "Conrad"];
-const partnerLogos = ["Golden Palms", "Rosetta", "Taj Mahal", "Four Seasons", "Conrad", "Novotel", "Marriott", "Radisson"];
 
 function Home() {
   const [services, setServices] = useState(serviceFallback);
@@ -56,25 +51,6 @@ function Home() {
     if (activeSlide >= serviceSlides.length) setActiveSlide(0);
   }, [activeSlide, serviceSlides.length]);
 
-  const voices = useMemo(
-    () =>
-      serviceSlides.map((slide, index) => ({
-        title: `How ${slide.title} delivered measurable hospitality outcomes`,
-        tag: `Case Study ${index + 1}`,
-        image: slide.image,
-      })),
-    [serviceSlides],
-  );
-
-  const insightPosts = useMemo(
-    () =>
-      serviceSlides.slice(0, 3).map((slide) => ({
-        title: slide.description,
-        image: slide.image,
-      })),
-    [serviceSlides],
-  );
-
   const statsPoints = [
     "Conferences, team programs, travel, and guest workflows executed with performance precision.",
     "Business insights, industry partnerships, and optimized systems that improve hospitality outcomes.",
@@ -95,15 +71,12 @@ function Home() {
       />
 
       <HeroShowcase slides={serviceSlides} activeIndex={activeSlide} onSelect={setActiveSlide} />
-      <ClientsSection clients={clientLogos} />
-      <VoicesSection items={voices} />
+      {/* <ClientsSection clients={clientLogos} /> */}
       <StatsSection points={statsPoints} stats={stats} />
-      <PartnersSection projects={roomData.slice(0, 3)} partners={partnerLogos} />
-      <InsightsSection posts={insightPosts} />
       <ContactBand />
 
-      <section className="section-shell pb-8">
-        <p className="mx-auto max-w-5xl text-center text-lg leading-8 text-[#465062]">
+      <section className="mx-auto max-w-7xl px-6 py-16">
+        <p className="mx-auto max-w-3xl text-center text-lg leading-relaxed text-gray-600">
           {companyProfile.commitment}
         </p>
       </section>

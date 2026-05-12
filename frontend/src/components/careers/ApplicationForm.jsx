@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import SectionHeader from "../company/SectionHeader";
 import Button from "../ui/Button";
-import api from "../../services/api";
+// TODO: import api from "../../services/api"; — uncomment when backend /careers/apply endpoint is ready
 
 const roleOptions = [
   "Hotel Operations Manager",
@@ -118,24 +118,28 @@ function ApplicationForm({ selectedRole, onRoleConsumed }) {
     setStatus("loading");
     setErrorMsg("");
 
-    const formData = new FormData();
-    Object.entries(form).forEach(([k, v]) => formData.append(k, v));
-    formData.append("resume", resume);
+    // ─── TODO: Replace mock with real API call when backend is ready ───────────
+    // const formData = new FormData();
+    // Object.entries(form).forEach(([k, v]) => formData.append(k, v));
+    // formData.append("resume", resume);
+    // try {
+    //   await api.post("/careers/apply", formData, {
+    //     headers: { "Content-Type": "multipart/form-data" },
+    //   });
+    // } catch (err) {
+    //   setStatus("error");
+    //   setErrorMsg(err?.response?.data?.message || "Something went wrong. Please try again.");
+    //   return;
+    // }
+    // ─────────────────────────────────────────────────────────────────────────
 
-    try {
-      await api.post("/careers/apply", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
-      setStatus("success");
-      setForm(initialForm);
-      setResume(null);
-      if (fileRef.current) fileRef.current.value = "";
-    } catch (err) {
-      setStatus("error");
-      setErrorMsg(
-        err?.response?.data?.message || "Something went wrong. Please try again."
-      );
-    }
+    // Mock: simulate network delay, always succeeds
+    await new Promise((resolve) => setTimeout(resolve, 1200));
+
+    setStatus("success");
+    setForm(initialForm);
+    setResume(null);
+    if (fileRef.current) fileRef.current.value = "";
   };
 
   const inputCls = (field) =>
@@ -144,19 +148,55 @@ function ApplicationForm({ selectedRole, onRoleConsumed }) {
   if (status === "success") {
     return (
       <section id="apply-form" ref={sectionRef} className="section-shell py-24">
-        <div className="mx-auto max-w-lg text-center">
-          <div className="mx-auto mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
-            <svg viewBox="0 0 24 24" className="h-8 w-8" fill="none" stroke="currentColor" strokeWidth="2">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-            </svg>
+        <div className="mx-auto max-w-lg">
+          <div className="glass-panel flex flex-col items-center p-10 text-center">
+            {/* Gold check circle */}
+            <div
+              style={{
+                background: "linear-gradient(135deg, #b8924a 0%, #d4af72 100%)",
+              }}
+              className="mb-6 inline-flex h-20 w-20 items-center justify-center rounded-full shadow-lg"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                className="h-10 w-10 text-white"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+
+            <h2 className="font-display text-3xl font-bold text-gray-900">
+              Application Submitted!
+            </h2>
+
+            <p className="mt-4 max-w-sm text-sm leading-7 text-gray-500">
+              Thank you for applying to{" "}
+              <span className="font-semibold text-gray-800">BAVESTA</span>. Our
+              HR team personally reviews every application and will reach out
+              within <span className="font-semibold text-gray-800">3–5 business days</span>.
+            </p>
+
+            <div
+              className="mt-6 w-full rounded-lg px-5 py-4 text-sm"
+              style={{
+                background: "#fdf8f1",
+                border: "1px solid #e9d8b8",
+                color: "#8a6630",
+              }}
+            >
+              📧 A confirmation has been logged. Keep an eye on your inbox.
+            </div>
+
+            <Button
+              className="mt-8 w-full justify-center"
+              onClick={() => setStatus("idle")}
+            >
+              Submit Another Application
+            </Button>
           </div>
-          <h2 className="font-display text-3xl font-bold text-gray-900">Application Submitted!</h2>
-          <p className="mt-4 text-sm leading-7 text-gray-500">
-            Thank you for applying to BAVESTA. Our HR team will review your profile and reach out within 3–5 business days.
-          </p>
-          <Button className="mt-8" onClick={() => setStatus("idle")}>
-            Submit Another Application
-          </Button>
         </div>
       </section>
     );
@@ -333,9 +373,23 @@ function ApplicationForm({ selectedRole, onRoleConsumed }) {
 
           {/* Error message */}
           {status === "error" && (
-            <p className="mt-4 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
-              {errorMsg}
-            </p>
+            <div className="mt-5 flex items-start gap-3 rounded-lg border border-red-200 bg-red-50 px-4 py-3.5">
+              <svg
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                className="mt-0.5 h-5 w-5 flex-shrink-0 text-red-500"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                  clipRule="evenodd"
+                />
+              </svg>
+              <div>
+                <p className="text-sm font-semibold text-red-700">Submission Failed</p>
+                <p className="mt-0.5 text-xs text-red-600">{errorMsg}</p>
+              </div>
+            </div>
           )}
 
           {/* Submit */}

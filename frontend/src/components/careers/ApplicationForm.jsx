@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import toast from "react-hot-toast";
 import SectionHeader from "../company/SectionHeader";
 import Button from "../ui/Button";
 // TODO: import api from "../../services/api"; — uncomment when backend /careers/apply endpoint is ready
@@ -127,8 +128,10 @@ function ApplicationForm({ selectedRole, onRoleConsumed }) {
     //     headers: { "Content-Type": "multipart/form-data" },
     //   });
     // } catch (err) {
+    //   const msg = err?.response?.data?.message || "Something went wrong. Please try again.";
     //   setStatus("error");
-    //   setErrorMsg(err?.response?.data?.message || "Something went wrong. Please try again.");
+    //   setErrorMsg(msg);
+    //   toast.error(msg);
     //   return;
     // }
     // ─────────────────────────────────────────────────────────────────────────
@@ -136,71 +139,19 @@ function ApplicationForm({ selectedRole, onRoleConsumed }) {
     // Mock: simulate network delay, always succeeds
     await new Promise((resolve) => setTimeout(resolve, 1200));
 
-    setStatus("success");
+    setStatus("idle");
     setForm(initialForm);
     setResume(null);
     if (fileRef.current) fileRef.current.value = "";
+
+    toast.success(
+      "Application submitted! Our HR team will reach out within 3–5 business days. 🎉",
+      { duration: 6000 }
+    );
   };
 
   const inputCls = (field) =>
     `input-base ${errors[field] ? "border-red-400 focus:border-red-500 focus:ring-red-500" : ""}`;
-
-  if (status === "success") {
-    return (
-      <section id="apply-form" ref={sectionRef} className="section-shell py-24">
-        <div className="mx-auto max-w-lg">
-          <div className="glass-panel flex flex-col items-center p-10 text-center">
-            {/* Gold check circle */}
-            <div
-              style={{
-                background: "linear-gradient(135deg, #b8924a 0%, #d4af72 100%)",
-              }}
-              className="mb-6 inline-flex h-20 w-20 items-center justify-center rounded-full shadow-lg"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                className="h-10 w-10 text-white"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-              </svg>
-            </div>
-
-            <h2 className="font-display text-3xl font-bold text-gray-900">
-              Application Submitted!
-            </h2>
-
-            <p className="mt-4 max-w-sm text-sm leading-7 text-gray-500">
-              Thank you for applying to{" "}
-              <span className="font-semibold text-gray-800">BAVESTA</span>. Our
-              HR team personally reviews every application and will reach out
-              within <span className="font-semibold text-gray-800">3–5 business days</span>.
-            </p>
-
-            <div
-              className="mt-6 w-full rounded-lg px-5 py-4 text-sm"
-              style={{
-                background: "#fdf8f1",
-                border: "1px solid #e9d8b8",
-                color: "#8a6630",
-              }}
-            >
-              📧 A confirmation has been logged. Keep an eye on your inbox.
-            </div>
-
-            <Button
-              className="mt-8 w-full justify-center"
-              onClick={() => setStatus("idle")}
-            >
-              Submit Another Application
-            </Button>
-          </div>
-        </div>
-      </section>
-    );
-  }
 
   return (
     <section id="apply-form" ref={sectionRef} className="section-shell py-20">

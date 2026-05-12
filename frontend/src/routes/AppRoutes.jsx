@@ -1,4 +1,4 @@
-﻿import { AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import PageTransition from "../components/animations/PageTransition";
@@ -11,11 +11,13 @@ import Services from "../pages/Services";
 import ServiceDetail from "../pages/ServiceDetail";
 import About from "../pages/About";
 import Contact from "../pages/Contact";
+import Careers from "../pages/Careers";
 import Login from "../pages/Admin/Login";
 import Dashboard from "../pages/Admin/Dashboard";
 import ManageServices from "../pages/Admin/ManageServices";
 import ManageInquiries from "../pages/Admin/ManageInquiries";
 import ManageBookings from "../pages/Admin/ManageBookings";
+import ManageApplications from "../pages/Admin/ManageApplications";
 
 function ProtectedRoute({ children }) {
   const { isAuthenticated } = useAuth();
@@ -43,6 +45,7 @@ function AppRoutes() {
         <Route path="/services" element={withTransition(<Services />)} />
         <Route path="/services/:id" element={withTransition(<ServiceDetail />)} />
         <Route path="/about" element={withTransition(<About />)} />
+        <Route path="/careers" element={withTransition(<Careers />)} />
         <Route path="/contact" element={withTransition(<Contact />)} />
 
         <Route path="/admin/login" element={withTransition(<Login />)} />
@@ -75,6 +78,14 @@ function AppRoutes() {
           element={withTransition(
             <ProtectedRoute>
               <ManageBookings />
+            </ProtectedRoute>,
+          )}
+        />
+        <Route
+          path="/admin/applications"
+          element={withTransition(
+            <ProtectedRoute>
+              <ManageApplications />
             </ProtectedRoute>,
           )}
         />

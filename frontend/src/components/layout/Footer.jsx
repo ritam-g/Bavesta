@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 const quickLinks = [
   { label: "Home", to: "/" },
   { label: "About Us", to: "/about" },
+  { label: "Careers", to: "/careers" },
   { label: "Contact Us", to: "/contact" },
 ];
 

@@ -1,4 +1,4 @@
-﻿import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import Seo from "../../components/Seo";
 import Button from "../../components/ui/Button";
@@ -10,6 +10,7 @@ function Dashboard() {
   const [services, setServices] = useState([]);
   const [inquiries, setInquiries] = useState([]);
   const [bookings, setBookings] = useState([]);
+  const [applications, setApplications] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -18,18 +19,21 @@ function Dashboard() {
       try {
         setLoading(true);
         setError("");
-        const [serviceRes, inquiryRes, bookingRes] = await Promise.all([
+        const [serviceRes, inquiryRes, bookingRes, appRes] = await Promise.all([
           api.get("/services"),
           api.get("/inquiries"),
           api.get("/bookings"),
+          api.get("/careers/applications").catch(() => ({ data: [] })),
         ]);
         setServices(serviceRes.data);
         setInquiries(inquiryRes.data);
         setBookings(bookingRes.data);
+        setApplications(appRes.data);
       } catch {
         setServices([]);
         setInquiries([]);
         setBookings([]);
+        setApplications([]);
         setError("Unable to load dashboard data right now.");
       } finally {
         setLoading(false);
@@ -51,6 +55,7 @@ function Dashboard() {
       ["In Progress", progressCount],
       ["Resolved", resolvedCount],
       ["Pending Bookings", pendingBookings],
+      ["Applications", applications.length],
     ];
   }, [services, inquiries, bookings]);
 
@@ -86,6 +91,9 @@ function Dashboard() {
         </Link>
         <Link to="/admin/bookings">
           <Button variant="slate">Manage Bookings</Button>
+        </Link>
+        <Link to="/admin/applications">
+          <Button variant="slate">Manage Applications</Button>
         </Link>
       </div>
 

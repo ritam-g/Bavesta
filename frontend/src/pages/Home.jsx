@@ -1,14 +1,37 @@
 import { useEffect, useMemo, useState } from "react";
 import Seo from "../components/Seo";
 import HeroShowcase from "../components/home/HeroShowcase";
-import ClientsSection from "../components/home/ClientsSection";
+import WhyChooseUs from "../components/home/WhyChooseUs";
+import ProcessSection from "../components/home/ProcessSection";
+import VoicesSection from "../components/home/VoicesSection";
 import StatsSection from "../components/home/StatsSection";
 import ContactBand from "../components/home/ContactBand";
 import api from "../services/api";
 import { companyProfile } from "../data/companyContent";
 import { getServiceImage, serviceFallback } from "../data/serviceData";
 
-const clientLogos = ["GE", "IBM", "ICICI", "OLA", "TAJ", "ITC", "Radisson", "Conrad"];
+const mockTestimonials = [
+  {
+    title: "BAVESTA transformed our operations. Our RevPAR increased by 15% in just 6 months.",
+    tag: "Luxury Resort, Goa",
+    image: "https://images.unsplash.com/photo-1542314831-c6a4d14d8c85?auto=format&fit=crop&q=80&w=800",
+  },
+  {
+    title: "Their staffing solutions are unparalleled. We hired an entire executive team seamlessly.",
+    tag: "Boutique Hotel, Mumbai",
+    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=800",
+  },
+  {
+    title: "Flawless PF & ESIC compliance management. It saved us from massive legal headaches.",
+    tag: "Restaurant Chain, Bangalore",
+    image: "https://images.unsplash.com/photo-1551882547-ff40c0d5bf8f?auto=format&fit=crop&q=80&w=800",
+  },
+  {
+    title: "Exceptional VIP guest coordination for our annual corporate retreat.",
+    tag: "Corporate Client, Delhi",
+    image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=800",
+  }
+];
 
 function Home() {
   const [services, setServices] = useState(serviceFallback);
@@ -66,13 +89,23 @@ function Home() {
   return (
     <>
       <Seo
-        title="BAVESTA Hospitality Services"
+        title="Home"
         description="Premium hospitality operations, consulting, manpower solutions, compliance, guest management, and business development services."
+        url="/"
       />
 
       <HeroShowcase slides={serviceSlides} activeIndex={activeSlide} onSelect={setActiveSlide} />
-      {/* <ClientsSection clients={clientLogos} /> */}
+      
+      <WhyChooseUs />
+      
       <StatsSection points={statsPoints} stats={stats} />
+      
+      <ProcessSection />
+      
+      <div className="bg-white py-12">
+        <VoicesSection items={mockTestimonials} />
+      </div>
+
       <ContactBand />
 
       <section className="mx-auto max-w-7xl px-6 py-16">
